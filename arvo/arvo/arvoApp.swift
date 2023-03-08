@@ -13,10 +13,30 @@ struct arvoApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self)  var appDelegate
     
+    @StateObject var observedResults = ObservedResults()
+    @StateObject var catalog = Catalog()
+    @StateObject var bookmarks = Bookmarks()
+    
+    init(){
+        let appearance = UINavigationBarAppearance()
+                    appearance.configureWithOpaqueBackground()
+                    appearance.shadowColor = .clear    //removing navigationbar 1 px bottom border.
+                    appearance.backgroundColor = #colorLiteral(red: 0.1924162178, green: 0.1908109435, blue: 0.1929768041, alpha: 1)
+                    appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+                    appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+                    UINavigationBar.appearance().standardAppearance = appearance
+                    UINavigationBar.appearance().scrollEdgeAppearance = appearance
+                    UITableView.appearance().backgroundColor = .clear
+        UITabBar.appearance().barTintColor = #colorLiteral(red: 0.1924162178, green: 0.1908109435, blue: 0.1929768041, alpha: 1)
+    }
+    
     var body: some Scene {
         WindowGroup {
             let viewModel = AppViewModel()
             ContentView()
+                .environmentObject(observedResults)
+                .environmentObject(catalog)
+                .environmentObject(bookmarks)
                 .environmentObject(viewModel)
         }
     }

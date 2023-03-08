@@ -3,7 +3,7 @@
 //  arvo
 //
 //  Created by reed kuivila on 3/7/23.
-//
+// https://www.youtube.com/watch?v=vPCEIPL0U_k&ab_channel=iOSAcademy
 
 import SwiftUI
 
@@ -52,6 +52,7 @@ struct SignInView: View {
                             .cornerRadius(20)
                         
                     })
+                    
                     NavigationLink("create account", destination: SignUpView())
                         .padding()
                 }

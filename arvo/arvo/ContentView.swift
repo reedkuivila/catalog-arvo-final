@@ -12,7 +12,8 @@ class AppViewModel: ObservableObject {
     
     let auth = Auth.auth()
     
-    @Published var signedIn = false
+    @Published public var signedIn = false
+
     
     var isSignedIn: Bool {
         return auth.currentUser != nil
@@ -27,7 +28,6 @@ class AppViewModel: ObservableObject {
             print("successfully signed in")
             DispatchQueue.main.async {
                 self?.signedIn = true
-
             }
         }
     }
@@ -44,48 +44,57 @@ class AppViewModel: ObservableObject {
             }
         }
     }
+    
     func signOut() {
         try? auth.signOut()
-        
+
         self.signedIn = false
     }
 }
 
 struct ContentView: View {
-    @EnvironmentObject var viewModel: AppViewModel
+    @EnvironmentObject public var viewModel: AppViewModel
     
     var body: some View {
-        NavigationView {
-            if viewModel.signedIn {
-                VStack {
-                    Text("you are signed in")
-                    
-                    Button(action: {
-                        viewModel.signOut()
-                        
-                    }, label: {
-                        Text("sign out")
-                            .frame(width: 200, height: 50)
-                            .foregroundColor(Color.black)
-                            .background(Color.white)
-                            .padding()
-                    })
-                }
+        
+        if viewModel.isSignedIn {
+            NavigationView{
+                TabView{
+                    CatalogView()
+                        .tabItem{
+                            Label("Catalog", systemImage: "numbersign")
+                        }
+                    SearchView()
+                        .tabItem{
+                            Label("Search", systemImage: "plus.circle")
+                        }
+                    BookMarkView()
+                        .tabItem{
+                            Label("Bookmarks", systemImage: "bookmark")
+                        }
+                    UserProfileView()
+                        .tabItem{
+                            Label("Profile", systemImage: "person")
+                        }
+                }.accentColor(.primary)
             }
-            else {
-                SignInView()
-            }
-        }
-        .onAppear {
-            viewModel.signedIn = viewModel.isSignedIn
+            
+        } else {
+            InitialSelectionView()
         }
     }
+//        .onAppear {
+//            viewModel.signedIn = viewModel.isSignedIn
+//        }
+
 }
+
+
 
 
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(AppViewModel())
     }
 }
