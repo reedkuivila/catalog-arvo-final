@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B4AD7B929B9091400C0798D /* FilmNegatives.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 4B4AD7B829B9091400C0798D /* FilmNegatives.mp4 */; };
 		4B515BEE29B8002000FB9063 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B515BED29B8002000FB9063 /* RatingView.swift */; };
 		4B515BF029B8002500FB9063 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B515BEF29B8002500FB9063 /* SearchView.swift */; };
 		4B515BF229B8003A00FB9063 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B515BF129B8003A00FB9063 /* BookmarkView.swift */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		401FA67522AFCC6DB03C2E5B /* Pods-arvo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-arvo.release.xcconfig"; path = "Target Support Files/Pods-arvo/Pods-arvo.release.xcconfig"; sourceTree = "<group>"; };
+		4B4AD7B829B9091400C0798D /* FilmNegatives.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = FilmNegatives.mp4; sourceTree = "<group>"; };
 		4B515BED29B8002000FB9063 /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		4B515BEF29B8002500FB9063 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		4B515BF129B8003A00FB9063 /* BookmarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				4B515C0129B8058200FB9063 /* Decoder.swift */,
 				4BD789BA29B7EDE900532A2E /* GoogleService-Info.plist */,
 				4B8CE85729B7E68C00058026 /* Assets.xcassets */,
+				4B4AD7B829B9091400C0798D /* FilmNegatives.mp4 */,
 				4B515BF929B8007F00FB9063 /* Model */,
 				4B8CE85929B7E68C00058026 /* Preview Content */,
 			);
@@ -213,6 +216,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B4AD7B929B9091400C0798D /* FilmNegatives.mp4 in Resources */,
 				4B8CE85B29B7E68C00058026 /* Preview Assets.xcassets in Resources */,
 				4B8CE85829B7E68C00058026 /* Assets.xcassets in Resources */,
 				4BD789BB29B7EDE900532A2E /* GoogleService-Info.plist in Resources */,
