@@ -9,6 +9,7 @@ import SwiftUI
 
 // code to make account if account does not exist
 struct SignUpView: View {
+    @State var firstName = ""
     @State var email = ""
     @State var password = ""
     
@@ -22,6 +23,13 @@ struct SignUpView: View {
                     .frame(width: 150, height: 150)
                 
                 VStack {
+                    TextField("first name", text: $firstName)
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
+                        .padding()
+                        .background(Color(.secondarySystemFill))
+                        .cornerRadius(20)
+                    
                     TextField("email address", text: $email)
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
