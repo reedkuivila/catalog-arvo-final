@@ -17,38 +17,61 @@ struct CatalogView: View {
         let catLen = catalog.results.count
         
         NavigationStack{
-            List(catalogWithIndex, id: \.1.id) {idx, item in
-                NavigationLink{
-                    DetailView(movie: item)
-                } label:{
-                    VStack(alignment: .leading) {
-                        HStack{
-                            Text(item.originalTitle!)
-                                .font(.headline)
-                                .foregroundColor(.white)
-                            Spacer()
-                    
-                            Text("\((1-Double(idx)/Double(catLen))*10, specifier: "%.1f")")
-                                .fontWeight(.bold)
-                                .foregroundColor(Color.white)
-                                .fixedSize(horizontal: false, vertical: true)
-                                .multilineTextAlignment(.center)
-                                .frame(width: 40, height: 40)
-                                .background(Rectangle().fill(Color.black))
-                                .overlay {
-                                    RoundedRectangle(cornerRadius: 2).stroke(.white, lineWidth: 1.5)
+            ZStack{
+            if catLen > 0 {
+                List(catalogWithIndex, id: \.1.id) {idx, item in
+                    NavigationLink{
+                        DetailView(movie: item)
+                    } label:{
+                        VStack(alignment: .leading) {
+                            HStack{
+                                Text(item.originalTitle!)
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+                                Spacer()
+                                if catLen > 2{
+                                    Text("\((1-Double(idx)/Double(catLen))*10, specifier: "%.1f")")
+                                        .fontWeight(.bold)
+                                        .foregroundColor(Color.white)
+                                        .fixedSize(horizontal: false, vertical: true)
+                                        .multilineTextAlignment(.center)
+                                        .frame(width: 30, height: 30)
+                                        .background(Rectangle().fill(Color.black))
+                                        .overlay {
+                                            RoundedRectangle(cornerRadius: 2).stroke(.white, lineWidth: 1.5)
+                                        }
+                                } else{
+                                    Image(systemName: "lock.square")
+                                        .resizable()
+                                        .frame(width: 40, height: 40)
+                                        .foregroundColor(.white)
                                 }
+                            }
                         }
+                        
                     }
-                
+                    .listRowBackground(Color.black)
+                    .listRowSeparatorTint(.white)
                 }
-                .listRowBackground(Color.black)
-                .listRowSeparatorTint(.white)
+            } else{
+                Color(#colorLiteral(red: 0.1924162178, green: 0.1908109435, blue: 0.1929768041, alpha: 1))
+                VStack{
+                Image(systemName: "numbersign")
+                    .resizable()
+                    .scaledToFill()
+                    .foregroundColor(Color(#colorLiteral(red: 0.1123900237, green: 0.1114523854, blue: 0.1127174613, alpha: 1)))
+                    .frame(width: 100, height: 100)
+                    Spacer().frame(height: 50)
+                    Text("Added movies will appear here")
+                        .font(.headline)
+                        .foregroundColor(Color(#colorLiteral(red: 0.1123900237, green: 0.1114523854, blue: 0.1127174613, alpha: 1)))
+                }
+
+            }
             }
             .navigationTitle("Catalog")
             .background(Color(#colorLiteral(red: 0.1924162178, green: 0.1908109435, blue: 0.1929768041, alpha: 1)))
                 .scrollContentBackground(.hidden)
-
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }

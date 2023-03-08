@@ -176,7 +176,7 @@ struct SearchView: View {
                 }
             } else{
                 ZStack{
-                    Color(#colorLiteral(red: 0.1924162178, green: 0.1908109435, blue: 0.1929768041, alpha: 1))
+                    Color(#colorLiteral(red: 0.1924162178, green: 0.1908109435, blue: 0.1929768041, alpha: 1)).ignoresSafeArea()
                     VStack{
                     Image(systemName: "magnifyingglass")
                         .resizable()
