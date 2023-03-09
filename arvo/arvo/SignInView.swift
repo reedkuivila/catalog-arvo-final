@@ -18,11 +18,14 @@ struct SignInView: View {
     
     var body: some View {
             VStack {
-                Image("lokulogo")
+                Image(systemName: "popcorn.circle.fill")
                     .resizable()
                     .scaledToFit()
                     .blur(radius: 0.5)
-                    .padding(.top, 65)
+                    .padding(.top, 105)
+                    .foregroundColor(.purple)
+                    .opacity(0.5)
+                    .frame(width: 250, height: 250)
                 
                 VStack {
                     TextField("", text: $email)
@@ -34,9 +37,8 @@ struct SignInView: View {
                         .foregroundColor(.white)
                         .cornerRadius(20)
                         .placeholder(when: email.isEmpty) {
-                            Text("email").foregroundColor(.white)
+                            Text("Email").foregroundColor(.white)
                                 .padding(.leading, 20)
-                                .font(.custom("times", fixedSize: 20))
                                 .bold()
                         }
                     
@@ -48,9 +50,8 @@ struct SignInView: View {
                         .foregroundColor(.white)
                         .cornerRadius(20)
                         .placeholder(when: password.isEmpty) {
-                            Text("password").foregroundColor(.white)
+                            Text("Password").foregroundColor(.white)
                                 .padding(.leading, 20)
-                                .font(.custom("times", fixedSize: 20))
                                 .bold()
                         }
                     
@@ -78,9 +79,8 @@ struct SignInView: View {
                 .padding()
                 Spacer()
             }
-            .background(LinearGradient(gradient: gradient, startPoint: .top, endPoint: .bottom))
+            .background(LinearGradient(gradient: gradient, startPoint: .bottom, endPoint: .top))
             .edgesIgnoringSafeArea(.all)
-//            .navigationTitle("user login")
         }
     }
 

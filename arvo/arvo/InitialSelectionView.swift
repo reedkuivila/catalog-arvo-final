@@ -52,13 +52,12 @@ struct InitialSelectionView: View {
                     VStack(alignment: .leading) {
                         Spacer()
                         // create account button
-                        // TODO: to make create account page and add navigation link
                         NavigationLink(destination: SignUpView()) {
                             Button {
                                 print("go to create account page")
                             } label: {
-                                Text("create account")
-                                    .font(.custom("times", fixedSize: 35))
+                                Text("Create account")
+                                    .font(.custom("system", fixedSize: 25))
                                     .bold()
                                     .foregroundColor(.white)
                             }
@@ -74,8 +73,8 @@ struct InitialSelectionView: View {
                             Button {
                                 print("go to sign in page")
                             } label: {
-                                Text("sign in")
-                                    .font(.custom("times", fixedSize: 35))
+                                Text("Sign in")
+                                    .font(.custom("system", fixedSize: 25))
                                     .bold()
                                     .foregroundColor(.white)
                             }
@@ -92,14 +91,6 @@ struct InitialSelectionView: View {
                     }
                 }
             }
-            
-            // cream color background - whole page
-            //                .background(Color(red: 255.0/255.0,
-            //                                  green: 231.0/255.0,
-            //                                  blue: 180.0/255.0))
-            //                .opacity(0.4)
-            //                .navigationViewStyle(.automatic)
-            
         }
     }
 }
