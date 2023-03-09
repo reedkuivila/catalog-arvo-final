@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Foundation
-import FirebaseFirestore
 
 struct UserProfileView: View {
     let displayName = "some name"

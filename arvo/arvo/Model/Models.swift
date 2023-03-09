@@ -22,6 +22,7 @@ struct TmdbEntry: Codable, Identifiable {
     let voteAverage: Double?
     let overview, releaseDate: String?
     let mediaType: String?
+    var rating: String?
 
     enum CodingKeys: String, CodingKey {
         case popularity
@@ -133,4 +134,8 @@ class ObservedResults: ObservableObject {
     @Published var results: [TmdbEntry] = []
 }
 
+class DisplayMessage: ObservableObject{
+    @Published var msg: String = ""
+    @Published var isShowingToast = false
+}
 

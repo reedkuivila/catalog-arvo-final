@@ -30,6 +30,7 @@ struct CatalogView: View {
                                     .foregroundColor(.white)
                                 Spacer()
                                 if catLen > 2{
+                                    
                                     Text("\((1-Double(idx)/Double(catLen))*10, specifier: "%.1f")")
                                         .fontWeight(.bold)
                                         .foregroundColor(Color.white)

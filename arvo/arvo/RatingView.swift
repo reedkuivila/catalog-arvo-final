@@ -11,13 +11,20 @@ struct RatingView: View {
     
     @EnvironmentObject var catalog: Catalog
     @EnvironmentObject var bookmarks: Bookmarks
+    @EnvironmentObject var displayMsg: DisplayMessage
     @State private var leftIndex: Int = 0
     @State private var rightIndex: Int
     @Binding var showingBottomSheet: Bool
     @Binding var movie: TmdbEntry
     
     var middleIndex: Int {
-        return self.floorDivInt(self.leftIndex, self.rightIndex)
+        let index = self.floorDivInt(self.leftIndex, self.rightIndex)
+        
+        if index >= 0{
+            return index
+        } else{
+            return 0
+        }
     }
     
     var comparisonURL: URL{
@@ -31,7 +38,7 @@ struct RatingView: View {
     var isDone: Bool{
         if leftIndex < rightIndex {
             return false
-        } else{
+        }  else{
             return true
         }
     }
@@ -78,6 +85,7 @@ struct RatingView: View {
                                 
                                 self.catalog.save()
                                 self.bookmarks.save()
+                                self.displayMsg.isShowingToast.toggle()
                                 self.showingBottomSheet = false
                             }
                         } label: {
@@ -91,19 +99,13 @@ struct RatingView: View {
                             .frame(width: 150, height: 250)
                             .shadow(radius: 5)
                             .cornerRadius(5)
-//                            .overlay(RoundedRectangle(cornerRadius: 5).stroke(.white, lineWidth: 5))
-                            
                         }.buttonStyle(PlainButtonStyle())
                         Spacer().frame(height: 10)
                         
-//                        Text("\(self.movie.originalTitle!)")
-//                            .font(.body)
-//                            .fontWeight(.semibold)
-//                            .lineLimit(1)
-//                            .foregroundColor(.white)
+
                     }
 
-                    
+        
                     VStack{
                         Button{
                             print("Tapped2")
@@ -129,6 +131,7 @@ struct RatingView: View {
                                     print("deleted key. New length: \(self.bookmarks.results.count)")
                                 }
                                 self.bookmarks.save()
+                                self.displayMsg.isShowingToast.toggle()
                                 self.showingBottomSheet = false
                             }
                             
@@ -185,6 +188,7 @@ struct RatingView_Previews: PreviewProvider {
     @State static var tempMovie = TmdbEntry(popularity: 98.041, voteCount: 14983, video: false, posterPath: "/t3vaWRPSf6WjDSamIkKDs1iQWna.jpg", id: 2062, adult: false, backdropPath: "/xgDj56UWyeWQcxQ44f5A3RTWuSs.jpg", originalLanguage: "en", originalTitle: "Ratatouille", genreIDS: [16,35,10751, 14], title: "Ratatouille", voteAverage: 7.795, overview: "Remy, a resident of Paris, appreciates good food and has quite a sophisticated palate.", releaseDate: "2007-06-28", mediaType: "movie")
     
     @State static var showingBottomSheet = true
+    @State static var toaster = true
     
     
     static var previews: some View {
@@ -195,5 +199,6 @@ struct RatingView_Previews: PreviewProvider {
             
             return catalogPreview
         }())
+        .environmentObject(DisplayMessage())
     }
 }

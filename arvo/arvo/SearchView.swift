@@ -8,29 +8,23 @@
 import SwiftUI
 
 struct ToastModifier: ViewModifier{
-    @Binding var isShowing: Bool
     var catalogEntries: Int
     var movieTitle: String
-    @Binding var displayMessage: String
     let duration: TimeInterval
+    @EnvironmentObject var displayMsg: DisplayMessage
     
     func body(content: Content) -> some View {
         ZStack{
             content
             
-            if isShowing{
+            if displayMsg.isShowingToast{
             VStack{
                 Spacer()
                 HStack{
                     Image(systemName: "heart")
                         .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
-                    if (catalogEntries < 3){
-                    Text(displayMessage)
-                        .foregroundColor(Color.white)}
-                    else{
-                        Text(displayMessage)
-                            .foregroundColor(Color.white)
-                    }
+                    Text(displayMsg.msg)
+                        .foregroundColor(.white)
                     Spacer()
                 }
                 .frame(minWidth: 0, maxWidth: .infinity)
@@ -43,12 +37,12 @@ struct ToastModifier: ViewModifier{
                 .onAppear{
                     DispatchQueue.main.asyncAfter(deadline: .now() + duration){
                         withAnimation{
-                            isShowing = false
+                            displayMsg.isShowingToast = false
                         }
                     }
                 }
                 .onTapGesture {
-                    isShowing = false
+                    displayMsg.isShowingToast = false
                 }
             }
             
@@ -58,8 +52,8 @@ struct ToastModifier: ViewModifier{
 
 
 extension View{
-    func toast(isShowing: Binding<Bool>, duration: TimeInterval = 3, catalogEntries: Int, movieTitle: String, displayMessage: Binding<String>) -> some View{
-        modifier(ToastModifier(isShowing: isShowing, catalogEntries: catalogEntries, movieTitle: movieTitle, displayMessage: displayMessage, duration: 1))
+    func toast(duration: TimeInterval = 3, catalogEntries: Int, movieTitle: String) -> some View{
+        modifier(ToastModifier(catalogEntries: catalogEntries, movieTitle: movieTitle, duration: 2))
     }
 }
 
@@ -69,13 +63,10 @@ struct SearchView: View {
     @EnvironmentObject var observedResults: ObservedResults
     @EnvironmentObject var catalog: Catalog
     @EnvironmentObject var bookmarks: Bookmarks
+    @EnvironmentObject var displayMsg: DisplayMessage
     @State private var showRating = false
     @State var showingBottomSheet = false
     @State private var clickedMovie = TmdbEntry(popularity: 98.041, voteCount: 14983, video: false, posterPath: "/t3vaWRPSf6WjDSamIkKDs1iQWna.jpg", id: 2062, adult: false, backdropPath: "/xgDj56UWyeWQcxQ44f5A3RTWuSs.jpg", originalLanguage: "en", originalTitle: "Ratatouille", genreIDS: [16,35,10751, 14], title: "Ratatouille", voteAverage: 7.795, overview: "Remy, a resident of Paris, appreciates good food and has quite a sophisticated palate.", releaseDate: "2007-06-28", mediaType: "movie")
-    @State private var isShowingToast = false
-    @State var displayMessage = ""
-    @EnvironmentObject public var viewModel: AppViewModel
-
 
     
     var body: some View {
@@ -115,9 +106,8 @@ struct SearchView: View {
                                     } else{
                                         self.bookmarks.results.append(item)
                                         self.bookmarks.bookmarkedMovies[item.id!] = item.id!
-                                        self.bookmarks.save()
-                                        displayMessage = "Bookmarked \(item.title!)!"
-                                        self.isShowingToast.toggle()
+                                        displayMsg.msg = "Bookmarked \(item.title!)!"
+                                        self.displayMsg.isShowingToast.toggle()
                                     }
                                     
                                     self.bookmarks.save()
@@ -137,19 +127,19 @@ struct SearchView: View {
                                     clickedMovie = item
                                     
                                     if catalog.addedMovies.keys.contains(item.id!){
-                                        displayMessage = "Already added \(item.title!)"
-                                        self.isShowingToast.toggle()
+                                        displayMsg.msg = "Already added \(item.title!)"
+                                        self.displayMsg.isShowingToast.toggle()
                                     } else{
                                         if catalog.results.count < 2{
                                         catalog.results.append(item)
                                             catalog.addedMovies[item.id!] = item.id!
-                                        displayMessage = "Added \(String(describing: item.title!))! Add \(3-catalog.results.count) More to generate ratings"
-                                        self.isShowingToast.toggle()
+                                            displayMsg.msg = "Added \(String(describing: item.title!))! Add \(3-catalog.results.count) More to generate ratings"
+                                            self.displayMsg.isShowingToast.toggle()
+                                            catalog.save()
                                         
                                     } else{
-                                        displayMessage = "Added \(String(describing: item.title))!"
+                                        displayMsg.msg = "Added \(String(describing: item.title!))!"
                                         self.showingBottomSheet.toggle()
-                                        self.isShowingToast.toggle()
                                         }
                                     }
                                     
@@ -178,11 +168,11 @@ struct SearchView: View {
                 ZStack{
                     Color(#colorLiteral(red: 0.1924162178, green: 0.1908109435, blue: 0.1929768041, alpha: 1)).ignoresSafeArea()
                     VStack{
-                    Image(systemName: "magnifyingglass")
-                        .resizable()
-                        .scaledToFill()
-                        .foregroundColor(Color(#colorLiteral(red: 0.1123900237, green: 0.1114523854, blue: 0.1127174613, alpha: 1)))
-                        .frame(width: 100, height: 100)
+                        Image(systemName: "magnifyingglass")
+                            .resizable()
+                            .scaledToFill()
+                            .foregroundColor(Color(#colorLiteral(red: 0.1123900237, green: 0.1114523854, blue: 0.1127174613, alpha: 1)))
+                            .frame(width: 100, height: 100)
                         Spacer().frame(height: 50)
                         Text("Search for movies")
                             .font(.headline)
@@ -191,26 +181,10 @@ struct SearchView: View {
                 }
             }
             }
-            .toast(isShowing: $isShowingToast, catalogEntries: catalog.results.count, movieTitle: clickedMovie.title ?? "", displayMessage: $displayMessage)
+            .toast(catalogEntries: catalog.results.count, movieTitle: clickedMovie.title ?? "")
             .navigationBarTitle("Search")
-        }.toolbar{
-            ToolbarItem{
-                Button(action: {
-                    viewModel.signOut()
-
-                }, label: {
-                    Text("sign out")
-                        .frame(width: 200, height: 50)
-                        .foregroundColor(Color.black)
-                        .background(Color.white)
-                        .padding()
-                })
-
-            }
         }
         .searchable(text: $searchText, prompt: "Search for movies")
-        .autocorrectionDisabled(true)
-        .keyboardType(.default)
         .font(.body).foregroundColor(.white)
         .onSubmit(of: .search, {Task{
             await callTMDB()

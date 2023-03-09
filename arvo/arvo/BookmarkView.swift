@@ -11,7 +11,7 @@ struct BookMarkView: View {
     
     @EnvironmentObject var bookmarks: Bookmarks
     @EnvironmentObject var catalog: Catalog
-    @State private var isShowingToast = false
+    @EnvironmentObject var displayMsg: DisplayMessage
     @State private var showingBottomSheet = false
     @State private var clickedMovie = TmdbEntry(popularity: 98.041, voteCount: 14983, video: false, posterPath: "/t3vaWRPSf6WjDSamIkKDs1iQWna.jpg", id: 2062, adult: false, backdropPath: "/xgDj56UWyeWQcxQ44f5A3RTWuSs.jpg", originalLanguage: "en", originalTitle: "Ratatouille", genreIDS: [16,35,10751, 14], title: "Ratatouille", voteAverage: 7.795, overview: "Remy, a resident of Paris, appreciates good food and has quite a sophisticated palate.", releaseDate: "2007-06-28", mediaType: "movie")
     
@@ -40,15 +40,17 @@ struct BookMarkView: View {
                                 Button(action: {
                                     self.clickedMovie = item
                                     if catalog.addedMovies.keys.contains(item.id!){
-                                        displayMessage = "Already added \(item.title!)"
-                                        self.isShowingToast.toggle()
+                                        displayMsg.msg = "Already added \(item.title!)"
+                                        self.displayMsg.isShowingToast.toggle()
                                     } else{
                                         if catalog.results.count < 2{
                                             catalog.results.append(item)
-                                            self.isShowingToast.toggle()
+                                            displayMsg.msg = "Added \(item.title!)! Add \(3 - catalog.results.count) more movies to see ratings"
+                                            self.displayMsg.isShowingToast.toggle()
                                             print(self.catalog.results)
                                             
                                         } else{
+                                            displayMsg.msg = "Added \(item.title!)!"
                                             self.showingBottomSheet.toggle()
                                         }
                                     }
@@ -97,7 +99,7 @@ struct BookMarkView: View {
             RatingView(movie: $clickedMovie, rightIndex: catalog.results.count-1, showingBottomSheet: $showingBottomSheet)
                 .presentationDetents([.medium, .large])
         }
-        .toast(isShowing: $isShowingToast, catalogEntries: catalog.results.count, movieTitle: clickedMovie.title ?? "", displayMessage: $displayMessage)
+        .toast(catalogEntries: catalog.results.count, movieTitle: clickedMovie.title ?? "")
     }
 }
 

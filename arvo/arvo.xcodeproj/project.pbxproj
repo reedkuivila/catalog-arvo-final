@@ -11,7 +11,7 @@
 		4B515BEE29B8002000FB9063 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B515BED29B8002000FB9063 /* RatingView.swift */; };
 		4B515BF029B8002500FB9063 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B515BEF29B8002500FB9063 /* SearchView.swift */; };
 		4B515BF229B8003A00FB9063 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B515BF129B8003A00FB9063 /* BookmarkView.swift */; };
-		4B515BF429B8004400FB9063 /* RandomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B515BF329B8004400FB9063 /* RandomView.swift */; };
+		4B515BF429B8004400FB9063 /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B515BF329B8004400FB9063 /* DropDownView.swift */; };
 		4B515BF829B8007500FB9063 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B515BF729B8007500FB9063 /* Utilities.swift */; };
 		4B515BFC29B8007F00FB9063 /* TmdbRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B515BFA29B8007F00FB9063 /* TmdbRequest.swift */; };
 		4B515BFD29B8007F00FB9063 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B515BFB29B8007F00FB9063 /* Models.swift */; };
@@ -39,7 +39,7 @@
 		4B515BED29B8002000FB9063 /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		4B515BEF29B8002500FB9063 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		4B515BF129B8003A00FB9063 /* BookmarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
-		4B515BF329B8004400FB9063 /* RandomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomView.swift; sourceTree = "<group>"; };
+		4B515BF329B8004400FB9063 /* DropDownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
 		4B515BF729B8007500FB9063 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		4B515BFA29B8007F00FB9063 /* TmdbRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TmdbRequest.swift; sourceTree = "<group>"; };
 		4B515BFB29B8007F00FB9063 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 				4B515BF129B8003A00FB9063 /* BookmarkView.swift */,
 				4B515BED29B8002000FB9063 /* RatingView.swift */,
 				4B88104729B7FDED00AA6D5A /* DetailView.swift */,
-				4B515BF329B8004400FB9063 /* RandomView.swift */,
+				4B515BF329B8004400FB9063 /* DropDownView.swift */,
 				4B515BF729B8007500FB9063 /* Utilities.swift */,
 				4B515C0029B8058200FB9063 /* CountryData.swift */,
 				4B515C0129B8058200FB9063 /* Decoder.swift */,
@@ -277,7 +277,7 @@
 				4B515C0929B8164E00FB9063 /* UserProfileView.swift in Sources */,
 				4B515C0229B8058200FB9063 /* CountryData.swift in Sources */,
 				4B515BFD29B8007F00FB9063 /* Models.swift in Sources */,
-				4B515BF429B8004400FB9063 /* RandomView.swift in Sources */,
+				4B515BF429B8004400FB9063 /* DropDownView.swift in Sources */,
 				4B515BFF29B804AF00FB9063 /* PhoneSignUpView.swift in Sources */,
 				4B515BF829B8007500FB9063 /* Utilities.swift in Sources */,
 				4BD789BF29B7F80D00532A2E /* SignUpView.swift in Sources */,

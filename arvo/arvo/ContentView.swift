@@ -54,7 +54,11 @@ class AppViewModel: ObservableObject {
 
 struct ContentView: View {
     @EnvironmentObject public var viewModel: AppViewModel
-    
+    @EnvironmentObject var observedResults: ObservedResults
+    @EnvironmentObject var catalog: Catalog
+    @EnvironmentObject var bookmarks: Bookmarks
+    @EnvironmentObject var displayMsg: DisplayMessage
+
     var body: some View {
         
         if viewModel.isSignedIn {
@@ -96,5 +100,10 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView().environmentObject(AppViewModel())
+            .environmentObject(ObservedResults())
+            .environmentObject(Catalog())
+            .environmentObject(Bookmarks())
+            .environmentObject(DisplayMessage())
+            
     }
 }

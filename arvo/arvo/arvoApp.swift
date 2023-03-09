@@ -16,6 +16,7 @@ struct arvoApp: App {
     @StateObject var observedResults = ObservedResults()
     @StateObject var catalog = Catalog()
     @StateObject var bookmarks = Bookmarks()
+    @StateObject var displayMsg = DisplayMessage()
     
     init(){
         let appearance = UINavigationBarAppearance()
@@ -38,6 +39,7 @@ struct arvoApp: App {
                 .environmentObject(catalog)
                 .environmentObject(bookmarks)
                 .environmentObject(viewModel)
+                .environmentObject(displayMsg)
         }
     }
 }
