@@ -30,42 +30,40 @@ struct DetailView: View {
             //Zstack holds two instances of the movie poster with a blur effect in between to create fading effect
             //Vstack with description genres etc is shown below movie poster thanks to a spacer
             ZStack{
-                
-                VStack{
-                    ZStack(alignment: .topLeading){
-                        //Attribution: https://www.youtube.com/watch?v=EFnUwG22fHk
-                        AsyncImage(url: movieURL) { image in
-                            image
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 800, alignment: .topLeading)
-                                .edgesIgnoringSafeArea(.top)
-                        } placeholder: {
-                            ProgressView()
-                        }
-                        Blur(style: .light)
-                            .frame(height: 800  , alignment: .topLeading)
-                        //                        .edgesIgnoringSafeArea(.top)
-                        AsyncImage(url: movieURL) { image in
-                            image
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: 800, alignment: .topLeading)
-                                .edgesIgnoringSafeArea(.top)
-                                .mask(LinearGradient(gradient:
-                                                        Gradient(stops:[
-                                                            .init(color: Color.black, location:0),
-                                                            .init(color: Color.black, location: 0.15),
-                                                            .init(color: Color.black.opacity(0), location: 1)
-                                                        ]
-                                                        ), startPoint: .top, endPoint: .bottom))
-                        } placeholder: {
-                            ProgressView()
-                        }
+                ZStack(alignment: .topLeading){
+                    //Attribution: https://www.youtube.com/watch?v=EFnUwG22fHk
+                    AsyncImage(url: movieURL) { image in
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 800, alignment: .topLeading)
+                            .edgesIgnoringSafeArea(.top)
+                    } placeholder: {
+                        ProgressView()
                     }
-                    
+                    Blur(style: .light)
+                        .frame(height: 800  , alignment: .topLeading)
+                    //                        .edgesIgnoringSafeArea(.top)
+                    AsyncImage(url: movieURL) { image in
+                        image
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 800, alignment: .topLeading)
+                            .edgesIgnoringSafeArea(.top)
+                            .mask(LinearGradient(gradient:
+                                                    Gradient(stops:[
+                                                        .init(color: Color.black, location:0),
+                                                        .init(color: Color.black, location: 0.15),
+                                                        .init(color: Color.black.opacity(0), location: 1)
+                                                    ]
+                                                    ), startPoint: .top, endPoint: .bottom))
+                    } placeholder: {
+                        ProgressView()
+                    }
+                }
+                VStack{
                     ScrollView{
-//                        Spacer().frame(height: 550)
+                        Spacer().frame(height: 550)
                         
                         ZStack{
                             Color(#colorLiteral(red: 0.1924162178, green: 0.1908109435, blue: 0.1929768041, alpha: 1))

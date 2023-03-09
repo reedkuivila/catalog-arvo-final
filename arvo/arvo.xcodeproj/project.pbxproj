@@ -32,6 +32,7 @@
 		4BD789BB29B7EDE900532A2E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4BD789BA29B7EDE900532A2E /* GoogleService-Info.plist */; };
 		4BD789BD29B7F7E200532A2E /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD789BC29B7F7E200532A2E /* SignInView.swift */; };
 		4BD789BF29B7F80D00532A2E /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BD789BE29B7F80D00532A2E /* SignUpView.swift */; };
+		558BC1F129BA73FA002E2359 /* InstructionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558BC1F029BA73FA002E2359 /* InstructionView.swift */; };
 		7E60D0E860ECC5753988319C /* Pods_arvo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFC88268507B2F2959FFDAD5 /* Pods_arvo.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		4BD789BA29B7EDE900532A2E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4BD789BC29B7F7E200532A2E /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		4BD789BE29B7F80D00532A2E /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		558BC1F029BA73FA002E2359 /* InstructionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionView.swift; sourceTree = "<group>"; };
 		77226F1C65BCF0B84394E6E7 /* Pods-arvo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-arvo.debug.xcconfig"; path = "Target Support Files/Pods-arvo/Pods-arvo.debug.xcconfig"; sourceTree = "<group>"; };
 		CFC88268507B2F2959FFDAD5 /* Pods_arvo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_arvo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -135,6 +137,7 @@
 				4B515BF329B8004400FB9063 /* DropDownView.swift */,
 				4B515BF729B8007500FB9063 /* Utilities.swift */,
 				4B515C0029B8058200FB9063 /* CountryData.swift */,
+				558BC1F029BA73FA002E2359 /* InstructionView.swift */,
 				4B515C0129B8058200FB9063 /* Decoder.swift */,
 				4BD789BA29B7EDE900532A2E /* GoogleService-Info.plist */,
 				4B8CE85729B7E68C00058026 /* Assets.xcassets */,
@@ -294,6 +297,7 @@
 				4B6FA32029BA5E4B00451681 /* SplashScreenView.swift in Sources */,
 				4B515BF029B8002500FB9063 /* SearchView.swift in Sources */,
 				4B515BFC29B8007F00FB9063 /* TmdbRequest.swift in Sources */,
+				558BC1F129BA73FA002E2359 /* InstructionView.swift in Sources */,
 				4B88104629B7FD8100AA6D5A /* CatalogView.swift in Sources */,
 				4B515C0729B805ED00FB9063 /* InitialSelectionView.swift in Sources */,
 				4B8CE85429B7E68B00058026 /* arvoApp.swift in Sources */,

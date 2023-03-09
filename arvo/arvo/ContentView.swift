@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-//import FirebaseAuth
+import FirebaseAuth
 
 class AppViewModel: ObservableObject {
     let auth = Auth.auth()
@@ -65,6 +65,15 @@ struct ContentView: View {
             return false
         }
     }
+    
+    var showInstructions: Bool{
+        if opened.openedCount == 0{
+            return true
+        } else{
+            return false
+        }
+    }
+    
     @EnvironmentObject var userInfo: UserAccount
     
     var body: some View {
@@ -115,6 +124,8 @@ struct ContentView: View {
             }
             opened.save()
         }
+        
+        .sheet(item: .constant(self.showInstructions), content: InstructionView())
     }
 }
         
