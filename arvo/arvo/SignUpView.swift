@@ -56,7 +56,6 @@ struct SignUpView: View {
                                 .padding(.leading, 20)
                                 .font(.custom("times", fixedSize: 20))
                                 .bold()
-
                         }
                     
                     SecureField("", text: $password)

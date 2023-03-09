@@ -8,7 +8,7 @@
 import SwiftUI
 
 // code to sign in if account is created
-struct SignInView: View {
+struct SignInView: View {    
     @State var email = ""
     @State var password = ""
     

@@ -58,6 +58,7 @@ struct ContentView: View {
     @EnvironmentObject var catalog: Catalog
     @EnvironmentObject var bookmarks: Bookmarks
     @EnvironmentObject var displayMsg: DisplayMessage
+    @EnvironmentObject var userInfo: UserAccount
 
     var body: some View {
         
@@ -76,10 +77,11 @@ struct ContentView: View {
                         .tabItem{
                             Label("Bookmarks", systemImage: "bookmark")
                         }
-                    UserProfileView()
+                    SignOutView()
                         .tabItem{
-                            Label("Profile", systemImage: "person")
+                            Label("Sign out", systemImage: "power")
                         }
+
                 }.accentColor(.primary)
             }
             
@@ -87,9 +89,6 @@ struct ContentView: View {
             InitialSelectionView()
         }
     }
-//        .onAppear {
-//            viewModel.signedIn = viewModel.isSignedIn
-//        }
 
 }
 

@@ -139,3 +139,7 @@ class DisplayMessage: ObservableObject{
     @Published var isShowingToast = false
 }
 
+class UserAccount: ObservableObject {
+    @Published var firstName: String = ""
+    @Published var email: String = ""
+}
