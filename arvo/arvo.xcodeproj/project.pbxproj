@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4B4AD7B929B9091400C0798D /* FilmNegatives.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 4B4AD7B829B9091400C0798D /* FilmNegatives.mp4 */; };
-		4B4AD7D529B928ED00C0798D /* DateFirestoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4AD7D429B928ED00C0798D /* DateFirestoreApp.swift */; };
-		4B4AD7D729B9291900C0798D /* JoinDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4AD7D629B9291900C0798D /* JoinDate.swift */; };
 		4B515BEE29B8002000FB9063 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B515BED29B8002000FB9063 /* RatingView.swift */; };
 		4B515BF029B8002500FB9063 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B515BEF29B8002500FB9063 /* SearchView.swift */; };
 		4B515BF229B8003A00FB9063 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B515BF129B8003A00FB9063 /* BookmarkView.swift */; };
@@ -38,8 +36,6 @@
 /* Begin PBXFileReference section */
 		401FA67522AFCC6DB03C2E5B /* Pods-arvo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-arvo.release.xcconfig"; path = "Target Support Files/Pods-arvo/Pods-arvo.release.xcconfig"; sourceTree = "<group>"; };
 		4B4AD7B829B9091400C0798D /* FilmNegatives.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = FilmNegatives.mp4; sourceTree = "<group>"; };
-		4B4AD7D429B928ED00C0798D /* DateFirestoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFirestoreApp.swift; sourceTree = "<group>"; };
-		4B4AD7D629B9291900C0798D /* JoinDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinDate.swift; sourceTree = "<group>"; };
 		4B515BED29B8002000FB9063 /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		4B515BEF29B8002500FB9063 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		4B515BF129B8003A00FB9063 /* BookmarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
@@ -121,8 +117,6 @@
 				4B8CE85329B7E68B00058026 /* arvoApp.swift */,
 				4B8CE85529B7E68B00058026 /* ContentView.swift */,
 				4B515C0829B8164E00FB9063 /* UserProfileView.swift */,
-				4B4AD7D429B928ED00C0798D /* DateFirestoreApp.swift */,
-				4B4AD7D629B9291900C0798D /* JoinDate.swift */,
 				4BD789BE29B7F80D00532A2E /* SignUpView.swift */,
 				4BD789BC29B7F7E200532A2E /* SignInView.swift */,
 				4B515BFE29B804AF00FB9063 /* PhoneSignUpView.swift */,
@@ -280,7 +274,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B515BF229B8003A00FB9063 /* BookmarkView.swift in Sources */,
-				4B4AD7D529B928ED00C0798D /* DateFirestoreApp.swift in Sources */,
 				4B515C0929B8164E00FB9063 /* UserProfileView.swift in Sources */,
 				4B515C0229B8058200FB9063 /* CountryData.swift in Sources */,
 				4B515BFD29B8007F00FB9063 /* Models.swift in Sources */,
@@ -298,7 +291,6 @@
 				4B8CE85429B7E68B00058026 /* arvoApp.swift in Sources */,
 				4B515C0329B8058200FB9063 /* Decoder.swift in Sources */,
 				4B515BEE29B8002000FB9063 /* RatingView.swift in Sources */,
-				4B4AD7D729B9291900C0798D /* JoinDate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
