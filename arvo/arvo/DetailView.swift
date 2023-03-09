@@ -13,26 +13,20 @@ struct DetailView: View {
     @State var displayMessage = ""
     @State private var isShowingToast = false
     @State var showingBottomSheet = false
+    @State var toast = true
     @State var clickedMovie = TmdbEntry(popularity: 98.041, voteCount: 14983, video: false, posterPath: "/t3vaWRPSf6WjDSamIkKDs1iQWna.jpg", id: 2062, adult: false, backdropPath: "/xgDj56UWyeWQcxQ44f5A3RTWuSs.jpg", originalLanguage: "en", originalTitle: "Ratatouille", genreIDS: [16,35,10751, 14], title: "Ratatouille", voteAverage: 7.795, overview: "Remy, a resident of Paris, appreciates good food and has quite a sophisticated palate. He would love to become a chef so he can create and enjoy culinary masterpieces to his heart's delight. The only problem is, Remy is a rat. When he winds up in the sewer beneath one of Paris' finest restaurants, the rodent gourmet finds himself ideally placed to realize his dream.", releaseDate: "2007-06-28", mediaType: "movie")
     
     var movie = TmdbEntry(popularity: 98.041, voteCount: 14983, video: false, posterPath: "/t3vaWRPSf6WjDSamIkKDs1iQWna.jpg", id: 2062, adult: false, backdropPath: "/xgDj56UWyeWQcxQ44f5A3RTWuSs.jpg", originalLanguage: "en", originalTitle: "Ratatouille", genreIDS: [16,35,10751, 14], title: "Ratatouille", voteAverage: 7.795, overview: "Remy, a resident of Paris, appreciates good food and has quite a sophisticated palate. He would love to become a chef so he can create and enjoy culinary masterpieces to his heart's delight. The only problem is, Remy is a rat. When he winds up in the sewer beneath one of Paris' finest restaurants, the rodent gourmet finds himself ideally placed to realize his dream.", releaseDate: "2007-06-28", mediaType: "movie")
     
     init(movie: TmdbEntry){
         self.movie = movie
-        
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-                 UINavigationBar.appearance().shadowImage = UIImage()
-                 UINavigationBar.appearance().isTranslucent = true
-                 UINavigationBar.appearance().tintColor = .clear
-                 UINavigationBar.appearance().backgroundColor = .clear
     }
     
     var body: some View {
         let movieURL = URL(string: "https://image.tmdb.org/t/p/w780\(movie.posterPath!)")
         let added = self.catalog.addedMovies.keys.contains(movie.id!)
         let bookmarked = self.bookmarks.bookmarkedMovies.keys.contains(movie.id!)
-            
-        NavigationStack{
+       
             ZStack{
                 ZStack(alignment: .topLeading){
                     //Attribution: https://www.youtube.com/watch?v=EFnUwG22fHk
@@ -52,12 +46,12 @@ struct DetailView: View {
                         image
                             .resizable()
                             .scaledToFit()
-                            .frame(height: 600, alignment: .topLeading)
+                            .frame(height: 800, alignment: .topLeading)
                             .edgesIgnoringSafeArea(.top)
                             .mask(LinearGradient(gradient:
                                                     Gradient(stops:[
                                                         .init(color: Color.black, location:0),
-                                                        .init(color: Color.black, location: 0.1),
+                                                        .init(color: Color.black, location: 0.15),
                                                         .init(color: Color.black.opacity(0), location: 1)
                                                     ]
                                                     ), startPoint: .top, endPoint: .bottom))
@@ -174,11 +168,10 @@ struct DetailView: View {
                 }
                 
             }
-        }
-            .sheet(isPresented: $showingBottomSheet){
-            RatingView(movie: $clickedMovie, rightIndex: catalog.results.count-1, showingBottomSheet: $showingBottomSheet)
-                .presentationDetents([.medium, .large])
-        }
+        
+            .toolbar{
+                ShareLink(item: "Check out this movie! https://www.themoviedb.org/movie/\(self.movie.id!)")
+            }
         
         }
 }
