@@ -71,7 +71,8 @@ struct ContentView: View {
     @EnvironmentObject var userInfo: UserAccount
 
     var body: some View {
-        
+       
+        ZStack{
         if viewModel.isSignedIn {
             NavigationView{
                 TabView{
@@ -91,20 +92,21 @@ struct ContentView: View {
                         .tabItem{
                             Label("Sign out", systemImage: "power")
                         }
-
+                    
                 }.accentColor(.primary)
-                .alert(isPresented: .constant(self.showAlert)){
+                    .alert(isPresented: .constant(self.showAlert)){
                         Alert(title: Text("Enjoying Loku?"),
                               message: Text("Rate us on the app store!"),
                               primaryButton: .default(Text("Ok!")),
                               secondaryButton: .default(Text("Maybe Later"))
                         )
-                        }
+                    }
             }
             
         } else {
             InitialSelectionView()
         }
+    }
         .onChange(of: scenePhase){ phase in
             
             if phase == .active{
