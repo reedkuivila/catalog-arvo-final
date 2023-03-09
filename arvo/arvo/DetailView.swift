@@ -7,11 +7,13 @@
 
 import SwiftUI
 
+//Detail view for all movies
+
 struct DetailView: View {
     @EnvironmentObject var catalog: Catalog
     @EnvironmentObject var bookmarks: Bookmarks
-    @State var displayMessage = ""
     @State var showingBottomSheet = false
+    @EnvironmentObject var displayMsg: DisplayMessage
     @State var clickedMovie = TmdbEntry(popularity: 98.041, voteCount: 14983, video: false, posterPath: "/t3vaWRPSf6WjDSamIkKDs1iQWna.jpg", id: 2062, adult: false, backdropPath: "/xgDj56UWyeWQcxQ44f5A3RTWuSs.jpg", originalLanguage: "en", originalTitle: "Ratatouille", genreIDS: [16,35,10751, 14], title: "Ratatouille", voteAverage: 7.795, overview: "Remy, a resident of Paris, appreciates good food and has quite a sophisticated palate. He would love to become a chef so he can create and enjoy culinary masterpieces to his heart's delight. The only problem is, Remy is a rat. When he winds up in the sewer beneath one of Paris' finest restaurants, the rodent gourmet finds himself ideally placed to realize his dream.", releaseDate: "2007-06-28", mediaType: "movie")
     
     var movie = TmdbEntry(popularity: 98.041, voteCount: 14983, video: false, posterPath: "/t3vaWRPSf6WjDSamIkKDs1iQWna.jpg", id: 2062, adult: false, backdropPath: "/xgDj56UWyeWQcxQ44f5A3RTWuSs.jpg", originalLanguage: "en", originalTitle: "Ratatouille", genreIDS: [16,35,10751, 14], title: "Ratatouille", voteAverage: 7.795, overview: "Remy, a resident of Paris, appreciates good food and has quite a sophisticated palate. He would love to become a chef so he can create and enjoy culinary masterpieces to his heart's delight. The only problem is, Remy is a rat. When he winds up in the sewer beneath one of Paris' finest restaurants, the rodent gourmet finds himself ideally placed to realize his dream.", releaseDate: "2007-06-28", mediaType: "movie")
@@ -24,7 +26,9 @@ struct DetailView: View {
         let movieURL = URL(string: "https://image.tmdb.org/t/p/w780\(movie.posterPath!)")
         let added = self.catalog.addedMovies.keys.contains(movie.id!)
         let bookmarked = self.bookmarks.bookmarkedMovies.keys.contains(movie.id!)
-       
+            
+            //Zstack holds two instances of the movie poster with a blur effect in between to create fading effect
+            //Vstack with description genres etc is shown below movie poster thanks to a spacer
             ZStack{
                 ZStack(alignment: .topLeading){
                     //Attribution: https://www.youtube.com/watch?v=EFnUwG22fHk
@@ -71,19 +75,25 @@ struct DetailView: View {
                                         .foregroundColor(Color.white)
                                         .multilineTextAlignment(.leading)
                                     Spacer()
-                                    
+                                    //changes options on detail view based on whether movie is added or not
                                     if !added{
                                         
+                                        //button for bookmarking/popping from bookmarks
                                         Button(action: {
                                             self.clickedMovie = movie
                                             if bookmarked{
                                                 self.bookmarks.bookmarkedMovies.removeValue(forKey: movie.id!)
                                                 self.bookmarks.results = self.bookmarks.results.filter{$0.id != movie.id}
+                                                displayMsg.msg = "Removed bookmark for \(movie.title!)!"
+                                                displayMsg.isShowingToast.toggle()
+                                                print("popped from bookmarks")
                                             } else{
                                                 self.bookmarks.results.append(movie)
                                                 self.bookmarks.bookmarkedMovies[movie.id!] = movie.id!
                                                 self.bookmarks.save()
-                                                displayMessage = "Bookmarked \(movie.title!)!"
+                                                displayMsg.msg = "Bookmarked \(movie.title!)!"
+                                                displayMsg.isShowingToast.toggle()
+                                                print("Added to bookmarks")
                                             }
                                             
                                             self.bookmarks.save()
@@ -98,15 +108,16 @@ struct DetailView: View {
                                             }
                                         }).buttonStyle(PlainButtonStyle())
                                         
+                                        //Button for adding if movie not added
                                         Button(action: {
                                             self.clickedMovie = movie
                                                 if catalog.results.count < 2{
                                                     catalog.results.append(movie)
                                                     catalog.addedMovies[movie.id!] = movie.id!
-                                                    displayMessage = "Added \(String(describing: movie.title!))! Add \(3-catalog.results.count) More to generate ratings"
-                                                    
+                                                    displayMsg.msg = "Added \(String(describing: movie.title!))! Add \(3-catalog.results.count) More to generate ratings"
+                                                    displayMsg.isShowingToast.toggle()
                                                 } else{
-                                                    displayMessage = "Added \(String(describing: movie.title))!"
+                                                    displayMsg.msg = "Added \(String(describing: movie.title))!"
                                                     self.showingBottomSheet.toggle()
                                                 }
                                             
@@ -115,8 +126,9 @@ struct DetailView: View {
                                                 .foregroundColor(.white)
                                         }).buttonStyle(PlainButtonStyle())
                                     } else{
+                                        
+                                        //if movie is already in catalog, then show a drop down menu for deleting or rescoring a movie
                                     HStack{
-
                                         DropDown(movie: movie, clickedMovie: $clickedMovie, showingBottomsheet: $showingBottomSheet)
                                     }
                                         
@@ -124,6 +136,7 @@ struct DetailView: View {
                                     
                                 }
                                 
+                                //scroll view of genres
                                 ScrollView(.horizontal){
                                     HStack{
                                         ForEach(movie.genreIDS!, id: \.self){ genre in
@@ -163,7 +176,7 @@ struct DetailView: View {
                 }
                 
             }
-        
+            //share button - shares link to movie on TMDB
             .toolbar{
                 ShareLink(item: "Check out this movie! https://www.themoviedb.org/movie/\(self.movie.id!)")
             }

@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+//Attribution for Toast Modifier: https://www.youtube.com/watch?v=ya9zDZJmaqo
+
+
+//View for showing "toast" when movies are added or bookmarked
 struct ToastModifier: ViewModifier{
     var catalogEntries: Int
     var movieTitle: String
@@ -51,11 +55,21 @@ struct ToastModifier: ViewModifier{
 }
 
 
+//View Modifier for toast
 extension View{
     func toast(duration: TimeInterval = 3, catalogEntries: Int, movieTitle: String) -> some View{
         modifier(ToastModifier(catalogEntries: catalogEntries, movieTitle: movieTitle, duration: 2))
     }
 }
+
+
+//View for Search. High level flow:
+    //Call TMDB API when user submits search term
+    //Display search results
+        //if movie exists in catalog:
+            //show checkmark
+        //else if movie exists in bookmarks:
+            //show button for adding a movie and "filled" bookmark
 
 struct SearchView: View {
     
@@ -99,19 +113,24 @@ struct SearchView: View {
                                 
                                 if !added{
                                 Button(action: {
-                                
+                                    //if movie is bookmarked -> pop from bookmarks on press. Else add to bookmarks
                                     if bookmarked{
                                         self.bookmarks.bookmarkedMovies.removeValue(forKey: item.id!)
                                         self.bookmarks.results = self.bookmarks.results.filter{$0.id != item.id}
+                                        displayMsg.msg = "Removed bookmark for \(item.oringalTitle!)"
+                                        self.displayMsg.isShowingToast.toggle()
+                                        print("Removed \(item.oringalTitle!) for bookmarks")
                                     } else{
                                         self.bookmarks.results.append(item)
                                         self.bookmarks.bookmarkedMovies[item.id!] = item.id!
-                                        displayMsg.msg = "Bookmarked \(item.title!)!"
+                                        displayMsg.msg = "Bookmarked \(item.oringalTitle!)!"
                                         self.displayMsg.isShowingToast.toggle()
+                                        print("Added \(item.oringalTitle!) to bookmarks")
                                     }
                                     
                                     self.bookmarks.save()
                                     }, label: {
+                                        //change label based on bookmarked or non bookmarked state
                                         let bookmarked = self.bookmarks.bookmarkedMovies.keys.contains(item.id!)
                                         if bookmarked{
                                             Image(systemName: "bookmark.fill")
@@ -126,10 +145,12 @@ struct SearchView: View {
                                 Button(action: {
                                     clickedMovie = item
                                     
+                                    //if movie already in catalog -> show alert saying as such
                                     if catalog.addedMovies.keys.contains(item.id!){
                                         displayMsg.msg = "Already added \(item.title!)"
                                         self.displayMsg.isShowingToast.toggle()
                                     } else{
+                                        //if catalog is less than 2, add directly
                                         if catalog.results.count < 2{
                                         catalog.results.append(item)
                                             catalog.addedMovies[item.id!] = item.id!
@@ -138,6 +159,7 @@ struct SearchView: View {
                                             catalog.save()
                                         
                                     } else{
+                                        //else call rating view to add to catalog
                                         displayMsg.msg = "Added \(String(describing: item.title!))!"
                                         self.showingBottomSheet.toggle()
                                         }
@@ -146,6 +168,7 @@ struct SearchView: View {
                                     
                                 }, label: {
                                     
+                                    //change label based on added or not added state
                                     if added{
                                         Image(systemName: "checkmark.circle.fill").foregroundColor(.white)
                                     }else{
@@ -165,6 +188,7 @@ struct SearchView: View {
                 
                 }
             } else{
+                //stack for showing icon when search is empty
                 ZStack{
                     Color(#colorLiteral(red: 0.1924162178, green: 0.1908109435, blue: 0.1929768041, alpha: 1)).ignoresSafeArea()
                     VStack{
@@ -199,8 +223,10 @@ struct SearchView: View {
     
     func callTMDB() async{
             
+            //calls TMDB API via URL session
             let searchTermUrl = searchText.replacingOccurrences(of: " ", with: "+")
             
+            print("pinging TMDB API")
             guard let movieUrl = URL(string: "https://api.themoviedb.org/3/search/movie?api_key=ccc1083f814b898f8cd1b7a97b5f9b1b&query=\(searchTermUrl)") else
             {
                 print("invalid URL")
@@ -212,6 +238,7 @@ struct SearchView: View {
                 let (data,_) = try await URLSession.shared.data(from: movieUrl)
                 
                 if let decodedResponse = try? JSONDecoder().decode(TmdbResponse.self, from: data) {
+                    print("Decoded response and adding to ObservedResults")
                     self.observedResults.results = decodedResponse.results
                     }
                 

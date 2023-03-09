@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+//View for bookmarks tab
+
 struct BookMarkView: View {
     
     @EnvironmentObject var bookmarks: Bookmarks
@@ -37,32 +39,36 @@ struct BookMarkView: View {
                                     .foregroundColor(Color.white)
                                 Spacer()
                                 
+                                //Button for ADDING movie directly from bookmark page
                                 Button(action: {
                                     self.clickedMovie = item
+                                    //double check movie is already in catalog, else add
                                     if catalog.addedMovies.keys.contains(item.id!){
                                         displayMsg.msg = "Already added \(item.title!)"
                                         self.displayMsg.isShowingToast.toggle()
+                                        print("Already added \(item.originalTitle!)")
                                     } else{
                                         if catalog.results.count < 2{
                                             catalog.results.append(item)
                                             displayMsg.msg = "Added \(item.title!)! Add \(3 - catalog.results.count) more movies to see ratings"
                                             self.displayMsg.isShowingToast.toggle()
-                                            print(self.catalog.results)
-                                            
                                         } else{
                                             displayMsg.msg = "Added \(item.title!)!"
                                             self.showingBottomSheet.toggle()
                                         }
+                                        print("Added \(item.originalTitle!) to catalog")
                                     }
                                 }, label: {
                                     Image(systemName: "plus.circle")
                                         .foregroundColor(.white)
                                 }).buttonStyle(PlainButtonStyle())
                                 
+                                //Bookmark button for poping from bookmarks
                                 Button(action: {
                                     self.bookmarks.bookmarkedMovies.removeValue(forKey: item.id!)
                                     self.bookmarks.results = self.bookmarks.results.filter{$0.id != item.id}
                                     self.bookmarks.save()
+                                    print("removed \(item.originalTitle!) from bookmarks")
                                 }, label: {
                                     Image(systemName: "bookmark.fill")
                                         .foregroundColor(.white)
@@ -75,6 +81,8 @@ struct BookMarkView: View {
                         .listRowSeparatorTint(.white)
                 }
             } else{
+                
+                //View for empty bookmarks page
                 ZStack{
                     Color(#colorLiteral(red: 0.1924162178, green: 0.1908109435, blue: 0.1929768041, alpha: 1))
                     VStack{

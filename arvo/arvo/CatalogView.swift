@@ -7,6 +7,15 @@
 
 import SwiftUI
 
+
+//View for showing rankings. High level flow:
+    //Fetch catalog object
+    //If catalog has <2 entries: show locks instead of score
+    //If catalog has >2 entries: show score
+    //If catalog is empty: show numbersign picture with caption
+
+
+
 struct CatalogView: View {
     
     @EnvironmentObject var catalog: Catalog

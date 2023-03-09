@@ -8,6 +8,7 @@
 import SwiftUI
 
 
+// Drop down menu for movies in catalog when shown in detail view
 struct DropDown: View {
     @State var expanded = false
     @State var movie: TmdbEntry
