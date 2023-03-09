@@ -25,21 +25,34 @@ struct SignInView: View {
                     .padding(.top, 65)
                 
                 VStack {
-                    TextField("email address", text: $email)
+                    TextField("", text: $email)
                         .keyboardType(.emailAddress)
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
                         .padding()
                         .background(Color(.secondarySystemFill))
-                        .foregroundColor(.orange)
+                        .foregroundColor(.white)
                         .cornerRadius(20)
+                        .placeholder(when: email.isEmpty) {
+                            Text("email").foregroundColor(.white)
+                                .padding(.leading, 20)
+                                .font(.custom("times", fixedSize: 20))
+                                .bold()
+                        }
                     
-                    SecureField("password", text: $password)
+                    SecureField("", text: $password)
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
                         .padding()
                         .background(Color(.secondarySystemFill))
+                        .foregroundColor(.white)
                         .cornerRadius(20)
+                        .placeholder(when: password.isEmpty) {
+                            Text("password").foregroundColor(.white)
+                                .padding(.leading, 20)
+                                .font(.custom("times", fixedSize: 20))
+                                .bold()
+                        }
                     
                     Button(action: {
                         
@@ -70,3 +83,4 @@ struct SignInView: View {
 //            .navigationTitle("user login")
         }
     }
+

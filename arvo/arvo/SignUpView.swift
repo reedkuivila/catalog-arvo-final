@@ -27,27 +27,51 @@ struct SignUpView: View {
 //                    .frame(width: 150, height: 150)
                 
                 VStack {
-                    TextField("first name", text: $firstName)
+                    TextField("", text: $firstName)
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
                         .padding()
                         .background(Color(.secondarySystemFill))
+                        .foregroundColor(.white)
                         .cornerRadius(20)
+                        .placeholder(when: firstName.isEmpty) {
+                            Text("first name").foregroundColor(.white)
+                                .padding(.leading, 20)
+                                .font(.custom("times", fixedSize: 20))
+                                .bold()
+
+                        }
+                       
                     
-                    TextField("email address", text: $email)
+                    TextField("", text: $email)
                         .keyboardType(.emailAddress)
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
                         .padding()
                         .background(Color(.secondarySystemFill))
+                        .foregroundColor(.white)
                         .cornerRadius(20)
+                        .placeholder(when: email.isEmpty) {
+                            Text("email address").foregroundColor(.white)
+                                .padding(.leading, 20)
+                                .font(.custom("times", fixedSize: 20))
+                                .bold()
+
+                        }
                     
-                    SecureField("password", text: $password)
+                    SecureField("", text: $password)
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
                         .padding()
                         .background(Color(.secondarySystemFill))
+                        .foregroundColor(.white)
                         .cornerRadius(20)
+                        .placeholder(when: password.isEmpty) {
+                            Text("password").foregroundColor(.white)
+                                .padding(.leading, 20)
+                                .font(.custom("times", fixedSize: 20))
+                                .bold()
+                        }
                     
                     Button(action: {
                         
@@ -74,3 +98,16 @@ struct SignUpView: View {
             .edgesIgnoringSafeArea(.all)
         }
     }
+
+extension View {
+    func placeholder<Content: View>(
+        when shouldShow: Bool,
+        alignment: Alignment = .leading,
+        @ViewBuilder placeholder: () -> Content) -> some View {
+
+        ZStack(alignment: alignment) {
+            placeholder().opacity(shouldShow ? 1 : 0)
+            self
+        }
+    }
+}
