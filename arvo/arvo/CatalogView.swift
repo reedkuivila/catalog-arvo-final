@@ -35,7 +35,7 @@ struct CatalogView: View {
                                         .foregroundColor(Color.white)
                                         .fixedSize(horizontal: false, vertical: true)
                                         .multilineTextAlignment(.center)
-                                        .frame(width: 30, height: 30)
+                                        .frame(width: 40, height: 40)
                                         .background(Rectangle().fill(Color.black))
                                         .overlay {
                                             RoundedRectangle(cornerRadius: 2).stroke(.white, lineWidth: 1.5)
@@ -43,7 +43,7 @@ struct CatalogView: View {
                                 } else{
                                     Image(systemName: "lock.square")
                                         .resizable()
-                                        .frame(width: 40, height: 40)
+                                        .frame(width: 30, height: 30)
                                         .foregroundColor(.white)
                                 }
                             }
