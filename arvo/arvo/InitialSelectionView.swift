@@ -65,13 +65,14 @@ struct InitialSelectionView: View {
                             .frame(maxWidth: .infinity)
                             .background(Color.purple.opacity(0.6))
                             .cornerRadius(15)
-                            .padding(20)
+                            .padding(1)
                         }
                         
                         // login button
                         NavigationLink(destination: SignInView()){
                             Button {
                                 print("go to sign in page")
+                                
                             } label: {
                                 Text("Sign in")
                                     .font(.custom("system", fixedSize: 25))
@@ -83,7 +84,7 @@ struct InitialSelectionView: View {
                             .frame(maxWidth: .infinity)
                             .background(Color.clear)
                             .cornerRadius(15)
-                            .padding(20)
+                            .padding(5)
                             
                         }
                         
