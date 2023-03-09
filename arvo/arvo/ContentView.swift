@@ -66,55 +66,56 @@ struct ContentView: View {
         }
     }
     @EnvironmentObject var userInfo: UserAccount
-    @EnvironmentObject private var splashScreenState: SplashScreenStateManager
     
     var body: some View {
-       
+        
         ZStack{
-        if viewModel.isSignedIn {
-            NavigationView{
-                TabView{
-                    CatalogView()
-                        .tabItem{
-                            Label("Catalog", systemImage: "numbersign")
+            Color.blue
+                .ignoresSafeArea()
+            Text("splash")
+                .foregroundColor(.white)
+            if self.viewModel.isSignedIn {
+                NavigationView{
+                    TabView{
+                        CatalogView()
+                            .tabItem{
+                                Label("Catalog", systemImage: "numbersign")
+                            }
+                        SearchView()
+                            .tabItem{
+                                Label("Search", systemImage: "plus.circle")
+                            }
+                        BookMarkView()
+                            .tabItem{
+                                Label("Bookmarks", systemImage: "bookmark")
+                            }
+                        SignOutView()
+                            .tabItem{
+                                Label("Sign out", systemImage: "power")
+                            }
+                        
+                    }.accentColor(.primary)
+                        .alert(isPresented: .constant(self.showAlert)){
+                            Alert(title: Text("Enjoying Loku?"),
+                                  message: Text("Rate us on the app store!"),
+                                  primaryButton: .default(Text("Ok!")),
+                                  secondaryButton: .default(Text("Maybe Later"))
+                            )
                         }
-                    SearchView()
-                        .tabItem{
-                            Label("Search", systemImage: "plus.circle")
-                        }
-                    BookMarkView()
-                        .tabItem{
-                            Label("Bookmarks", systemImage: "bookmark")
-                        }
-                    SignOutView()
-                        .tabItem{
-                            Label("Sign out", systemImage: "power")
-                        }
-                    
-                }.accentColor(.primary)
-                    .alert(isPresented: .constant(self.showAlert)){
-                        Alert(title: Text("Enjoying Loku?"),
-                              message: Text("Rate us on the app store!"),
-                              primaryButton: .default(Text("Ok!")),
-                              secondaryButton: .default(Text("Maybe Later"))
-                        )
-                    }
+                }
+                
+            } else {
+                InitialSelectionView()
             }
-            
-        } else {
-            InitialSelectionView()
         }
-    }
         .onChange(of: scenePhase){ phase in
-            
+
             if phase == .active{
                 opened.openedCount += 1
             }
+            opened.save()
         }
     }
-
-=======
->>>>>>> Stashed changes
 }
         
 struct ContentView_Previews: PreviewProvider {

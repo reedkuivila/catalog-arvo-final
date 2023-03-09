@@ -19,12 +19,14 @@ struct SignUpView: View {
 
     var body: some View {
             VStack {
-                Image("lokulogo")
+                Image(systemName: "popcorn.circle.fill")
                     .resizable()
                     .scaledToFit()
                     .blur(radius: 0.5)
-                    .padding(.top, 65)
-//                    .frame(width: 150, height: 150)
+                    .padding(.top, 105)
+                    .foregroundColor(.purple)
+                    .opacity(0.5)
+                    .frame(width: 250, height: 250)
                 
                 VStack {
                     TextField("", text: $firstName)
@@ -35,9 +37,8 @@ struct SignUpView: View {
                         .foregroundColor(.white)
                         .cornerRadius(20)
                         .placeholder(when: firstName.isEmpty) {
-                            Text("first name").foregroundColor(.white)
+                            Text("First name").foregroundColor(.white)
                                 .padding(.leading, 20)
-                                .font(.custom("times", fixedSize: 20))
                                 .bold()
 
                         }
@@ -52,9 +53,9 @@ struct SignUpView: View {
                         .foregroundColor(.white)
                         .cornerRadius(20)
                         .placeholder(when: email.isEmpty) {
-                            Text("email address").foregroundColor(.white)
+                            Text("Email").foregroundColor(.white)
                                 .padding(.leading, 20)
-                                .font(.custom("times", fixedSize: 20))
+                                .bold()
                                 .bold()
                         }
                     
@@ -66,9 +67,8 @@ struct SignUpView: View {
                         .foregroundColor(.white)
                         .cornerRadius(20)
                         .placeholder(when: password.isEmpty) {
-                            Text("password").foregroundColor(.white)
+                            Text("Password").foregroundColor(.white)
                                 .padding(.leading, 20)
-                                .font(.custom("times", fixedSize: 20))
                                 .bold()
                         }
                     
@@ -81,8 +81,7 @@ struct SignUpView: View {
                         viewModel.emailSignUp(email: email, password: password)
                         
                     }, label: {
-                        Text("create account")
-                            .font(.custom("times", fixedSize: 20.0).bold())
+                        Text("Create account")
                             .foregroundColor(Color.black)
                             .frame(width: 200, height: 50)
                             .background(Color.white)

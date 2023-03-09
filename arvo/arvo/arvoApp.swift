@@ -19,7 +19,7 @@ struct arvoApp: App {
     @StateObject var displayMsg = DisplayMessage()
     @StateObject var opened = TrackOpenings()
     @StateObject var userInfo = UserAccount()
-    @StateObject var splashScreenState = SplashScreenStateManager()
+    @StateObject var viewModel = AppViewModel()
 
     
     init(){
@@ -37,8 +37,8 @@ struct arvoApp: App {
     
     var body: some Scene {
         WindowGroup {
-            let viewModel = AppViewModel()
-            ContentView()
+            
+            SplashScreenView()
                 .environmentObject(observedResults)
                 .environmentObject(catalog)
                 .environmentObject(bookmarks)
@@ -46,13 +46,7 @@ struct arvoApp: App {
                 .environmentObject(displayMsg)
                 .environmentObject(opened)
                 .environmentObject(userInfo)
-            ZStack {
-                   ContentView()
-                   
-                   if splashScreenState.state != .finished {
-                       SplashScreenView()
-                   }
-               }.environmentObject(splashScreenState)
+           
         }
     }
 }
