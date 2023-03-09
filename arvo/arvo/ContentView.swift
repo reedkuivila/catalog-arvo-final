@@ -9,12 +9,9 @@ import SwiftUI
 //import FirebaseAuth
 
 class AppViewModel: ObservableObject {
-    
     let auth = Auth.auth()
-    
     @Published public var signedIn = false
 
-    
     var isSignedIn: Bool {
         return auth.currentUser != nil
     }
@@ -69,9 +66,11 @@ struct ContentView: View {
         }
     }
     @EnvironmentObject var userInfo: UserAccount
-
+    @EnvironmentObject private var splashScreenState: SplashScreenStateManager
+    
     var body: some View {
-        
+       
+        ZStack{
         if viewModel.isSignedIn {
             NavigationView{
                 TabView{
@@ -91,20 +90,21 @@ struct ContentView: View {
                         .tabItem{
                             Label("Sign out", systemImage: "power")
                         }
-
+                    
                 }.accentColor(.primary)
-                .alert(isPresented: .constant(self.showAlert)){
+                    .alert(isPresented: .constant(self.showAlert)){
                         Alert(title: Text("Enjoying Loku?"),
                               message: Text("Rate us on the app store!"),
                               primaryButton: .default(Text("Ok!")),
                               secondaryButton: .default(Text("Maybe Later"))
                         )
-                        }
+                    }
             }
             
         } else {
             InitialSelectionView()
         }
+    }
         .onChange(of: scenePhase){ phase in
             
             if phase == .active{
@@ -113,12 +113,10 @@ struct ContentView: View {
         }
     }
 
+=======
+>>>>>>> Stashed changes
 }
-
-
-
-
-
+        
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView().environmentObject(AppViewModel())
