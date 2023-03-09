@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4B4AD7B929B9091400C0798D /* FilmNegatives.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 4B4AD7B829B9091400C0798D /* FilmNegatives.mp4 */; };
+		4B4E9C0529BA4BAB00AE9505 /* SignOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4E9C0429BA4BAB00AE9505 /* SignOutView.swift */; };
 		4B515BEE29B8002000FB9063 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B515BED29B8002000FB9063 /* RatingView.swift */; };
 		4B515BF029B8002500FB9063 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B515BEF29B8002500FB9063 /* SearchView.swift */; };
 		4B515BF229B8003A00FB9063 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B515BF129B8003A00FB9063 /* BookmarkView.swift */; };
@@ -20,7 +21,6 @@
 		4B515C0329B8058200FB9063 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B515C0129B8058200FB9063 /* Decoder.swift */; };
 		4B515C0529B805C200FB9063 /* CountryNumbers.json in Resources */ = {isa = PBXBuildFile; fileRef = 4B515C0429B805C200FB9063 /* CountryNumbers.json */; };
 		4B515C0729B805ED00FB9063 /* InitialSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B515C0629B805ED00FB9063 /* InitialSelectionView.swift */; };
-		4B515C0929B8164E00FB9063 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B515C0829B8164E00FB9063 /* UserProfileView.swift */; };
 		4B88104629B7FD8100AA6D5A /* CatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B88104529B7FD8100AA6D5A /* CatalogView.swift */; };
 		4B88104829B7FDED00AA6D5A /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B88104729B7FDED00AA6D5A /* DetailView.swift */; };
 		4B8CE85429B7E68B00058026 /* arvoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B8CE85329B7E68B00058026 /* arvoApp.swift */; };
@@ -36,6 +36,7 @@
 /* Begin PBXFileReference section */
 		401FA67522AFCC6DB03C2E5B /* Pods-arvo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-arvo.release.xcconfig"; path = "Target Support Files/Pods-arvo/Pods-arvo.release.xcconfig"; sourceTree = "<group>"; };
 		4B4AD7B829B9091400C0798D /* FilmNegatives.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = FilmNegatives.mp4; sourceTree = "<group>"; };
+		4B4E9C0429BA4BAB00AE9505 /* SignOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutView.swift; sourceTree = "<group>"; };
 		4B515BED29B8002000FB9063 /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		4B515BEF29B8002500FB9063 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		4B515BF129B8003A00FB9063 /* BookmarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
@@ -48,7 +49,6 @@
 		4B515C0129B8058200FB9063 /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
 		4B515C0429B805C200FB9063 /* CountryNumbers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CountryNumbers.json; sourceTree = "<group>"; };
 		4B515C0629B805ED00FB9063 /* InitialSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialSelectionView.swift; sourceTree = "<group>"; };
-		4B515C0829B8164E00FB9063 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		4B88104529B7FD8100AA6D5A /* CatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogView.swift; sourceTree = "<group>"; };
 		4B88104729B7FDED00AA6D5A /* DetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		4B8CE85029B7E68B00058026 /* arvo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arvo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,7 +116,7 @@
 			children = (
 				4B8CE85329B7E68B00058026 /* arvoApp.swift */,
 				4B8CE85529B7E68B00058026 /* ContentView.swift */,
-				4B515C0829B8164E00FB9063 /* UserProfileView.swift */,
+				4B4E9C0429BA4BAB00AE9505 /* SignOutView.swift */,
 				4BD789BE29B7F80D00532A2E /* SignUpView.swift */,
 				4BD789BC29B7F7E200532A2E /* SignInView.swift */,
 				4B515BFE29B804AF00FB9063 /* PhoneSignUpView.swift */,
@@ -274,7 +274,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B515BF229B8003A00FB9063 /* BookmarkView.swift in Sources */,
-				4B515C0929B8164E00FB9063 /* UserProfileView.swift in Sources */,
 				4B515C0229B8058200FB9063 /* CountryData.swift in Sources */,
 				4B515BFD29B8007F00FB9063 /* Models.swift in Sources */,
 				4B515BF429B8004400FB9063 /* DropDownView.swift in Sources */,
@@ -282,6 +281,7 @@
 				4B515BF829B8007500FB9063 /* Utilities.swift in Sources */,
 				4BD789BF29B7F80D00532A2E /* SignUpView.swift in Sources */,
 				4BD789BD29B7F7E200532A2E /* SignInView.swift in Sources */,
+				4B4E9C0529BA4BAB00AE9505 /* SignOutView.swift in Sources */,
 				4B88104829B7FDED00AA6D5A /* DetailView.swift in Sources */,
 				4B8CE85629B7E68B00058026 /* ContentView.swift in Sources */,
 				4B515BF029B8002500FB9063 /* SearchView.swift in Sources */,
@@ -423,6 +423,8 @@
 				DEVELOPMENT_TEAM = QNRZCZCWSJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = loku;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -453,6 +455,8 @@
 				DEVELOPMENT_TEAM = QNRZCZCWSJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = loku;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

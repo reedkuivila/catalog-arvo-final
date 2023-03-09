@@ -68,6 +68,7 @@ struct ContentView: View {
             return false
         }
     }
+    @EnvironmentObject var userInfo: UserAccount
 
     var body: some View {
         
@@ -86,10 +87,11 @@ struct ContentView: View {
                         .tabItem{
                             Label("Bookmarks", systemImage: "bookmark")
                         }
-                    UserProfileView()
+                    SignOutView()
                         .tabItem{
-                            Label("Profile", systemImage: "person")
+                            Label("Sign out", systemImage: "power")
                         }
+
                 }.accentColor(.primary)
                 .alert(isPresented: .constant(self.showAlert)){
                         Alert(title: Text("Enjoying Loku?"),
@@ -110,9 +112,6 @@ struct ContentView: View {
             }
         }
     }
-//        .onAppear {
-//            viewModel.signedIn = viewModel.isSignedIn
-//        }
 
 }
 

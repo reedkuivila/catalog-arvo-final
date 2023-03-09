@@ -158,5 +158,8 @@ class TrackOpenings: ObservableObject{
         }
 
     }
-    
+}
+class UserAccount: ObservableObject {
+    @Published var firstName: String = ""
+    @Published var email: String = ""
 }
