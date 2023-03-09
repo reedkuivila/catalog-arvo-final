@@ -9,12 +9,9 @@ import SwiftUI
 import FirebaseAuth
 
 class AppViewModel: ObservableObject {
-    
     let auth = Auth.auth()
-    
     @Published public var signedIn = false
 
-    
     var isSignedIn: Bool {
         return auth.currentUser != nil
     }
@@ -69,7 +66,8 @@ struct ContentView: View {
         }
     }
     @EnvironmentObject var userInfo: UserAccount
-
+    @EnvironmentObject private var splashScreenState: SplashScreenStateManager
+    
     var body: some View {
        
         ZStack{
@@ -115,12 +113,10 @@ struct ContentView: View {
         }
     }
 
+=======
+>>>>>>> Stashed changes
 }
-
-
-
-
-
+        
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView().environmentObject(AppViewModel())

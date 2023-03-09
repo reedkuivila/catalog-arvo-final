@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		4B4AD7B929B9091400C0798D /* FilmNegatives.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 4B4AD7B829B9091400C0798D /* FilmNegatives.mp4 */; };
 		4B4E9C0529BA4BAB00AE9505 /* SignOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4E9C0429BA4BAB00AE9505 /* SignOutView.swift */; };
+		4B4E9C0929BA501400AE9505 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4E9C0829BA501400AE9505 /* SplashScreenView.swift */; };
+		4B4E9C0B29BA514300AE9505 /* SplashScreenStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4E9C0A29BA514300AE9505 /* SplashScreenStep.swift */; };
+		4B4E9C0D29BA51CD00AE9505 /* SplashScreenStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4E9C0C29BA51CD00AE9505 /* SplashScreenStateManager.swift */; };
 		4B515BEE29B8002000FB9063 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B515BED29B8002000FB9063 /* RatingView.swift */; };
 		4B515BF029B8002500FB9063 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B515BEF29B8002500FB9063 /* SearchView.swift */; };
 		4B515BF229B8003A00FB9063 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B515BF129B8003A00FB9063 /* BookmarkView.swift */; };
@@ -37,6 +40,9 @@
 		401FA67522AFCC6DB03C2E5B /* Pods-arvo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-arvo.release.xcconfig"; path = "Target Support Files/Pods-arvo/Pods-arvo.release.xcconfig"; sourceTree = "<group>"; };
 		4B4AD7B829B9091400C0798D /* FilmNegatives.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = FilmNegatives.mp4; sourceTree = "<group>"; };
 		4B4E9C0429BA4BAB00AE9505 /* SignOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutView.swift; sourceTree = "<group>"; };
+		4B4E9C0829BA501400AE9505 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		4B4E9C0A29BA514300AE9505 /* SplashScreenStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenStep.swift; sourceTree = "<group>"; };
+		4B4E9C0C29BA51CD00AE9505 /* SplashScreenStateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenStateManager.swift; sourceTree = "<group>"; };
 		4B515BED29B8002000FB9063 /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		4B515BEF29B8002500FB9063 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		4B515BF129B8003A00FB9063 /* BookmarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
@@ -117,6 +123,9 @@
 				4B8CE85329B7E68B00058026 /* arvoApp.swift */,
 				4B8CE85529B7E68B00058026 /* ContentView.swift */,
 				4B4E9C0429BA4BAB00AE9505 /* SignOutView.swift */,
+				4B4E9C0C29BA51CD00AE9505 /* SplashScreenStateManager.swift */,
+				4B4E9C0829BA501400AE9505 /* SplashScreenView.swift */,
+				4B4E9C0A29BA514300AE9505 /* SplashScreenStep.swift */,
 				4BD789BE29B7F80D00532A2E /* SignUpView.swift */,
 				4BD789BC29B7F7E200532A2E /* SignInView.swift */,
 				4B515BFE29B804AF00FB9063 /* PhoneSignUpView.swift */,
@@ -277,13 +286,16 @@
 				4B515C0229B8058200FB9063 /* CountryData.swift in Sources */,
 				4B515BFD29B8007F00FB9063 /* Models.swift in Sources */,
 				4B515BF429B8004400FB9063 /* DropDownView.swift in Sources */,
+				4B4E9C0D29BA51CD00AE9505 /* SplashScreenStateManager.swift in Sources */,
 				4B515BFF29B804AF00FB9063 /* PhoneSignUpView.swift in Sources */,
 				4B515BF829B8007500FB9063 /* Utilities.swift in Sources */,
 				4BD789BF29B7F80D00532A2E /* SignUpView.swift in Sources */,
 				4BD789BD29B7F7E200532A2E /* SignInView.swift in Sources */,
+				4B4E9C0B29BA514300AE9505 /* SplashScreenStep.swift in Sources */,
 				4B4E9C0529BA4BAB00AE9505 /* SignOutView.swift in Sources */,
 				4B88104829B7FDED00AA6D5A /* DetailView.swift in Sources */,
 				4B8CE85629B7E68B00058026 /* ContentView.swift in Sources */,
+				4B4E9C0929BA501400AE9505 /* SplashScreenView.swift in Sources */,
 				4B515BF029B8002500FB9063 /* SearchView.swift in Sources */,
 				4B515BFC29B8007F00FB9063 /* TmdbRequest.swift in Sources */,
 				4B88104629B7FD8100AA6D5A /* CatalogView.swift in Sources */,
@@ -428,6 +440,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -460,6 +473,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
