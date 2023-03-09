@@ -10,8 +10,8 @@ import SwiftUI
 struct InstructionView: View {
     var body: some View {
         ZStack{
-            Color(#colorLiteral(red: 0.1924162178, green: 0.1908109435, blue: 0.1929768041, alpha: 1))
-            VStack{
+            Color(#colorLiteral(red: 0.1924162178, green: 0.1908109435, blue: 0.1929768041, alpha: 1)).ignoresSafeArea()
+            VStack(alignment: .leading){
                 Text("Welcome to Loku!")
                     .font(.largeTitle)
                     .fontWeight(.bold)
@@ -21,25 +21,29 @@ struct InstructionView: View {
                     .frame(height:2)
                     .foregroundColor(.white)
                 HStack{
-                    Image(systemName: "play")
+                    Image(systemName: "star")
                     Text("Search for movies to add in the search tab")
                         .foregroundColor(Color.white)
+                        .fontWeight(.semibold)
                 }
                 HStack{
-                    Image(systemName: "play")
+                    Image(systemName: "star")
                     Text("We'll generate ratings after you add your third movie")
                         .foregroundColor(Color.white)
+                        .fontWeight(.semibold)
                 }
                 HStack{
-                    Image(systemName: "play")
+                    Image(systemName: "star")
                     Text("Track your to-watchlist with bookmarks")
                         .foregroundColor(Color.white)
+                        .fontWeight(.semibold)
                 }
                 
                 HStack{
-                    Image(systemName: "play")
+                    Image(systemName: "star")
                     Text("Rerate or delete movies from your catalog from detail pages for movies (accesible from the catalog tab)")
                         .foregroundColor(Color.white)
+                        .fontWeight(.semibold)
                 }
 
                 

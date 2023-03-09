@@ -32,6 +32,7 @@ struct DropDown: View {
             Button {
                 self.catalog.addedMovies.removeValue(forKey: movie.id!)
                 self.catalog.results = self.catalog.results.filter{$0.id != movie.id}
+                self.catalog.save()
             } label: {
                 Text("Delete Movie")
                 Image(systemName: "trash.circle")
@@ -44,6 +45,7 @@ struct DropDown: View {
                 self.catalog.addedMovies.removeValue(forKey: movie.id!)
                 self.catalog.results = self.catalog.results.filter{$0.id != movie.id}
                 self.showingBottomsheet.toggle()
+                self.catalog.save()
             } label: {
                 Text("Re-score Movie")
                 Image(systemName: "arrow.up.and.line.horizontal.and.arrow.down")
