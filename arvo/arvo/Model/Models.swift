@@ -139,3 +139,24 @@ class DisplayMessage: ObservableObject{
     @Published var isShowingToast = false
 }
 
+class TrackOpenings: ObservableObject{
+    @Published var openedCount: Int = 0
+    let openingSaveKey = "OpeningObject"
+    
+    init(){
+        if let data = UserDefaults.standard.data(forKey: openingSaveKey){
+            if let decoded = try? JSONDecoder().decode(Int.self, from: data){
+                self.openedCount = decoded
+            }
+        }
+    }
+    
+    
+    func save(){
+        if let encoded = try? JSONEncoder().encode(openedCount){
+            UserDefaults.standard.set(encoded, forKey: openingSaveKey)
+        }
+
+    }
+    
+}

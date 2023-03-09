@@ -58,6 +58,16 @@ struct ContentView: View {
     @EnvironmentObject var catalog: Catalog
     @EnvironmentObject var bookmarks: Bookmarks
     @EnvironmentObject var displayMsg: DisplayMessage
+    @EnvironmentObject var opened: TrackOpenings
+    @Environment(\.scenePhase)var scenePhase
+    
+    var showAlert: Bool {
+        if opened.openedCount == 3{
+            return true
+        } else{
+            return false
+        }
+    }
 
     var body: some View {
         
@@ -81,10 +91,23 @@ struct ContentView: View {
                             Label("Profile", systemImage: "person")
                         }
                 }.accentColor(.primary)
+                .alert(isPresented: .constant(self.showAlert)){
+                        Alert(title: Text("Enjoying Loku?"),
+                              message: Text("Rate us on the app store!"),
+                              primaryButton: .default(Text("Ok!")),
+                              secondaryButton: .default(Text("Maybe Later"))
+                        )
+                        }
             }
             
         } else {
             InitialSelectionView()
+        }
+        .onChange(of: scenePhase){ phase in
+            
+            if phase == .active{
+                opened.openedCount += 1
+            }
         }
     }
 //        .onAppear {
