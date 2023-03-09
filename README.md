@@ -1,8 +1,8 @@
-# catalog-arvo-final
-final combination of repos
+# loku
+loku is an app that allows users to store save their favorite movies. It uses a bisection search method to sort and rank movies rather than an arbitrary 5 star rank model.
 
-note - all development is doen in the .xcworkspace file. This is where you should run the app to see the simulator or to test anything
+# Additional material
+Please find the walkthrough video as well as the marketing materials and write up document in the repo as well
 
-Notes: the phone authentication is not being used. will be implemented later down the line. Email and name is more straightforward
-Some of the UI is clunky & dark mode stuff is a bit wonky. How should we target this? is there an easy fix?
-I threw a random "loku" image in the singin and signup views. doesnt look great so we should figure out a better solution for that
+# Running and testing
+the app uses cocoapods to manage all packages. The required pods are Firebase/Auth and Firebase/Core. To run the app please run the arvo.xvworkspace file.
