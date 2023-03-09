@@ -111,6 +111,9 @@ struct ContentView: View {
                                   secondaryButton: .default(Text("Maybe Later"))
                             )
                         }
+                }.sheet(isPresented: .constant(showInstructions)){
+                    InstructionView()
+                        .presentationDetents([.medium, .large])
                 }
                 
             } else {
@@ -125,13 +128,13 @@ struct ContentView: View {
             opened.save()
         }
         
-        .sheet(item: .constant(self.showInstructions), content: InstructionView())
     }
 }
         
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environmentObject(AppViewModel())
+        ContentView()
+            .environmentObject(AppViewModel())
             .environmentObject(ObservedResults())
             .environmentObject(Catalog())
             .environmentObject(Bookmarks())

@@ -44,6 +44,7 @@ struct DropDown: View {
                 self.clickedMovie = self.movie
                 self.catalog.addedMovies.removeValue(forKey: movie.id!)
                 self.catalog.results = self.catalog.results.filter{$0.id != movie.id}
+                self.catalog.save()
                 self.showingBottomsheet.toggle()
                 self.catalog.save()
             } label: {

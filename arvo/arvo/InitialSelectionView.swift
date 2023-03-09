@@ -42,10 +42,6 @@ struct InitialSelectionView: View {
                         .opacity(0.7)
                         .foregroundColor(.black)
                     
-                    Text("movies done better")
-                        .font(.custom("times", fixedSize: 35.0))
-                        .opacity(0.7)
-                        .foregroundColor(.black)
                     
                     // VStack to add login or sign up button
                     // should consider language of "sign in" or "login" and figure out which sounds better
@@ -65,13 +61,14 @@ struct InitialSelectionView: View {
                             .frame(maxWidth: .infinity)
                             .background(Color.purple.opacity(0.6))
                             .cornerRadius(15)
-                            .padding(20)
+                            .padding(1)
                         }
                         
                         // login button
                         NavigationLink(destination: SignInView()){
                             Button {
                                 print("go to sign in page")
+                                
                             } label: {
                                 Text("Sign in")
                                     .font(.custom("system", fixedSize: 25))
@@ -83,7 +80,7 @@ struct InitialSelectionView: View {
                             .frame(maxWidth: .infinity)
                             .background(Color.clear)
                             .cornerRadius(15)
-                            .padding(20)
+                            .padding(5)
                             
                         }
                         

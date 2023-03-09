@@ -33,7 +33,7 @@ struct ToastModifier: ViewModifier{
                 }
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .padding()
-                .background(Color.black)
+                .background(Color.purple)
                 .cornerRadius(10)
                 .shadow(radius: 5)
             }
@@ -117,15 +117,15 @@ struct SearchView: View {
                                     if bookmarked{
                                         self.bookmarks.bookmarkedMovies.removeValue(forKey: item.id!)
                                         self.bookmarks.results = self.bookmarks.results.filter{$0.id != item.id}
-                                        displayMsg.msg = "Removed bookmark for \(item.oringalTitle!)"
+                                        displayMsg.msg = "Removed bookmark for \(item.title!)"
                                         self.displayMsg.isShowingToast.toggle()
-                                        print("Removed \(item.oringalTitle!) for bookmarks")
+                                        print("Removed \(item.title!) for bookmarks")
                                     } else{
                                         self.bookmarks.results.append(item)
                                         self.bookmarks.bookmarkedMovies[item.id!] = item.id!
-                                        displayMsg.msg = "Bookmarked \(item.oringalTitle!)!"
+                                        displayMsg.msg = "Bookmarked \(item.title!)!"
                                         self.displayMsg.isShowingToast.toggle()
-                                        print("Added \(item.oringalTitle!) to bookmarks")
+                                        print("Added \(item.title!) to bookmarks")
                                     }
                                     
                                     self.bookmarks.save()

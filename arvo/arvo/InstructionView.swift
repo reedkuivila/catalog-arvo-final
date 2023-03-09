@@ -16,7 +16,7 @@ struct InstructionView: View {
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
-                Spacer.frame(height:20)
+                Spacer().frame(height:20)
                 Rectangle()
                     .frame(height:2)
                     .foregroundColor(.white)
