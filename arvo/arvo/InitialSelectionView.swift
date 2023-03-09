@@ -42,10 +42,6 @@ struct InitialSelectionView: View {
                         .opacity(0.7)
                         .foregroundColor(.black)
                     
-                    Text("movies done better")
-                        .font(.custom("times", fixedSize: 35.0))
-                        .opacity(0.7)
-                        .foregroundColor(.black)
                     
                     // VStack to add login or sign up button
                     // should consider language of "sign in" or "login" and figure out which sounds better

@@ -177,6 +177,7 @@ struct RatingView: View {
             Text("VS")
                 .font(.headline)
                 .fontWeight(.heavy)
+                .foregroundColor(Color.black)
                 .fixedSize(horizontal: false, vertical: true)
                 .multilineTextAlignment(.center)
                 .padding()

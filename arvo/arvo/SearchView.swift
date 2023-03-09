@@ -33,7 +33,7 @@ struct ToastModifier: ViewModifier{
                 }
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .padding()
-                .background(Color.black)
+                .background(Color.purple)
                 .cornerRadius(10)
                 .shadow(radius: 5)
             }
