@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import FirebaseAuth
+//import FirebaseAuth
 
 class AppViewModel: ObservableObject {
     let auth = Auth.auth()

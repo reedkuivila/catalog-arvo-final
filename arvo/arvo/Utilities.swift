@@ -28,6 +28,7 @@ func formatDate(date: String, mode: Int) -> String? {
     }
 }
 
+//Blur effect for detail view
 //https://medium.com/@edwurtle/blur-effect-inside-swiftui-a2e12e61e750
 
 struct Blur: UIViewRepresentable {
@@ -41,6 +42,7 @@ struct Blur: UIViewRepresentable {
     }
 }
 
+//Enum for enconding genres
 func genreIDToString( _ genreID: Int) -> String{
     
     switch genreID {

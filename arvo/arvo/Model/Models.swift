@@ -7,6 +7,7 @@
 
 import Foundation
 
+//Struct for storing movie information
 struct TmdbEntry: Codable, Identifiable {
     let popularity: Double?
     let voteCount: Int?
@@ -42,6 +43,8 @@ struct TmdbEntry: Codable, Identifiable {
     }
 }
 
+
+//Struct for decoding API response
 struct TmdbResponse: Codable{
     let page: Int
     let totalResults: Int?
@@ -51,19 +54,7 @@ struct TmdbResponse: Codable{
 }
 
 
-struct TmdbPerson: Codable{
-    let adult: Bool?
-    let gender: Int?
-    let knownForDepartment: String?
-    let name: String?
-    let originalName: String?
-    let popularity: Float64?
-    let profilePath: String?
-    let knownFor: [TmdbEntry]?
-
-}
-
-
+//Catalog class for persisting the user catalog
 class Catalog: ObservableObject {
     @Published var results: [TmdbEntry] = []
     @Published var addedMovies: [Int: Int] = [:]
@@ -97,6 +88,7 @@ class Catalog: ObservableObject {
     }
 }
 
+//Bookmark class for persisting bookmark data
 class Bookmarks: ObservableObject {
     @Published var results: [TmdbEntry] = []
     @Published var bookmarkedMovies: [Int: Int] = [:]
@@ -130,15 +122,18 @@ class Bookmarks: ObservableObject {
     }
 }
 
+//Observed results for storing TMDB search response
 class ObservedResults: ObservableObject {
     @Published var results: [TmdbEntry] = []
 }
 
+//Display message for updating toast and managing visibility
 class DisplayMessage: ObservableObject{
     @Published var msg: String = ""
     @Published var isShowingToast = false
 }
 
+//Class for tracking how many times app has been activated
 class TrackOpenings: ObservableObject{
     @Published var openedCount: Int = 0
     let openingSaveKey = "OpeningObject"
@@ -159,6 +154,7 @@ class TrackOpenings: ObservableObject{
 
     }
 }
+
 class UserAccount: ObservableObject {
     @Published var firstName: String = ""
     @Published var email: String = ""

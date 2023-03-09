@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+//View for rating sheet - holds core logic for rating movies. Operates on a form of bisection Search
+    //Say user wants to add Batman
+    //Always starts at the middle of the catalog array
+    //moves through array on whether Batman "wins" or "loses" a matchup with a movie at that point in the array
+    //Runs through log(n) match ups where n is length of catalog array
+
+
 struct RatingView: View {
     
     @EnvironmentObject var catalog: Catalog
@@ -17,6 +24,7 @@ struct RatingView: View {
     @Binding var showingBottomSheet: Bool
     @Binding var movie: TmdbEntry
     
+    //computed property essential for fetching the next movie in the matchup
     var middleIndex: Int {
         let index = self.floorDivInt(self.leftIndex, self.rightIndex)
         
@@ -27,6 +35,7 @@ struct RatingView: View {
         }
     }
     
+    //URL for competitor movie
     var comparisonURL: URL{
         return URL(string:"https://image.tmdb.org/t/p/w300/\(catalog.results[self.middleIndex].posterPath ?? "")")!
     }
@@ -35,6 +44,8 @@ struct RatingView: View {
         return catalog.results[self.middleIndex]
     }
     
+    //Computed property for checking if the search is completed
+        //Has a bug where need to tap twice if comparing against the first movie in the array. Unsure why
     var isDone: Bool{
         if leftIndex < rightIndex {
             return false
@@ -62,27 +73,29 @@ struct RatingView: View {
                     let movieURL = URL(string: "https://image.tmdb.org/t/p/w300/\(movie.posterPath ?? "")")
                     
                     VStack{
+                        
+                        //Button for declaring movie to be added as the winner of a matchup
                         Button{
-                            print("Tapped1")
+                            print("Choose \(movie.originalTitle!). Moving up")
                             if !self.isDone{
                                 if self.middleIndex == 0{
                                     self.rightIndex = 0
                                 } else{
                                     self.rightIndex = self.middleIndex - 1
                                 }
-                                print("left: \(self.leftIndex), right \(self.rightIndex), middle: \(self.middleIndex)")
+                                print("New Indexes: left: \(self.leftIndex), right \(self.rightIndex), middle: \(self.middleIndex)")
                             } else{
                                 self.catalog.results.insert(movie, at: self.middleIndex)
                                 self.catalog.addedMovies[movie.id!] = movie.id
                                 
                                 if self.bookmarks.bookmarkedMovies.keys.contains(movie.id!){
                                     self.bookmarks.bookmarkedMovies.removeValue(forKey: movie.id!)
-                                    print("deleting key. Old length: \(self.bookmarks.results.count)")
+                                    print("deleting \(movie.originalTitle!) from bookmarks. Old length: \(self.bookmarks.results.count)")
                                     self.bookmarks.results = self.bookmarks.results.filter{
                                         $0.id! != movie.id!}
-                                    print("deleted key. New length: \(self.bookmarks.results.count)")
                                 }
                                 
+                                print("Added \(movie.originalTitle!) to catalog and saving")
                                 self.catalog.save()
                                 self.bookmarks.save()
                                 self.displayMsg.isShowingToast.toggle()
@@ -105,14 +118,14 @@ struct RatingView: View {
 
                     }
 
-        
+                    //Button for declaring comparison movie as the winner of a matchup
                     VStack{
                         Button{
-                            print("Tapped2")
+                            print("Choose \(comparisonMovie.originalTitle!). Moving down")
                             if !self.isDone{
                                 self.leftIndex = self.middleIndex + 1
                                 print(self.middleIndex)
-                                print("left: \(self.leftIndex), right \(self.rightIndex), middle: \(self.middleIndex)")
+                                print("New Indexes: left: \(self.leftIndex), right \(self.rightIndex), middle: \(self.middleIndex)")
                             } else{
                                 if self.middleIndex < self.catalog.results.count - 1{
                                     self.catalog.results.insert(movie, at: self.middleIndex + 1)
@@ -121,6 +134,7 @@ struct RatingView: View {
                                     self.catalog.results.append(movie)
                                     self.catalog.addedMovies[movie.id!] = movie.id
                                 }
+                                print("Added \(movie.originalTitle!) to catalog and saving")
                                 self.catalog.save()
                                 
                                 if self.bookmarks.bookmarkedMovies.keys.contains(movie.id!){
