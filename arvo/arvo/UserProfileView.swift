@@ -39,6 +39,11 @@ struct UserProfileView: View {
                         .foregroundColor(.black)
                         .padding(.top, 1)
                     
+                    Text("date joined")
+                        .font(.custom("times", fixedSize: 20))
+                        .bold()
+                        .foregroundColor(.black)
+                        .padding(.top, 1)
                     
                 }
                 Spacer()
@@ -48,6 +53,7 @@ struct UserProfileView: View {
         
     }
 }
+
 
 struct UserProfileView_Previews: PreviewProvider {
     static var previews: some View {

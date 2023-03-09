@@ -15,12 +15,16 @@ struct SignUpView: View {
     
     @EnvironmentObject var viewModel: AppViewModel
     
+    let gradient = Gradient(colors: [.gray, .black])
+
     var body: some View {
             VStack {
-                Image(systemName: "camera.filters")
+                Image("lokulogo")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 150, height: 150)
+                    .blur(radius: 0.5)
+                    .padding(.top, 65)
+//                    .frame(width: 150, height: 150)
                 
                 VStack {
                     TextField("first name", text: $firstName)
@@ -31,6 +35,7 @@ struct SignUpView: View {
                         .cornerRadius(20)
                     
                     TextField("email address", text: $email)
+                        .keyboardType(.emailAddress)
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
                         .padding()
@@ -54,6 +59,7 @@ struct SignUpView: View {
                         
                     }, label: {
                         Text("create account")
+                            .font(.custom("times", fixedSize: 20.0).bold())
                             .foregroundColor(Color.black)
                             .frame(width: 200, height: 50)
                             .background(Color.white)
@@ -64,6 +70,7 @@ struct SignUpView: View {
                 .padding()
                 Spacer()
             }
-            .navigationTitle("create account")
+            .background(LinearGradient(gradient: gradient, startPoint: .bottom, endPoint: .top))
+            .edgesIgnoringSafeArea(.all)
         }
     }
